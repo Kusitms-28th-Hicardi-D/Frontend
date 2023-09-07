@@ -1,0 +1,35 @@
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease;
+    align-items: center;
+
+    .carousel-image {
+      flex: 0 0 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .index {
+    align-self: center;
+    .index-item {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-right: 5px;
+      background-color: rgba(128, 128, 128, 0.563); // 기본 컬러
+      transition: background-color 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &.active {
+        background-color: blue; // 활성화된 컬러
+      }
+    }
+  }
+}
