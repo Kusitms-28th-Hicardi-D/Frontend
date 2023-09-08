@@ -1,9 +1,5 @@
 import { styled } from "styled-components";
-import {
-  EContainer,
-  FlexBox,
-  Words,
-} from "../../customComponent/customComponents";
+import { EContainer, FlexBox, Words } from "../../styles/customComponents";
 
 const usages = [
   [

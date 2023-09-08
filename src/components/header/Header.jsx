@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { FlexBox, Words } from "./customComponents";
+import { FlexBox, Words } from "../../styles/customComponents";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";

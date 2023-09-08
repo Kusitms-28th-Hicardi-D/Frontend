@@ -1,6 +1,6 @@
 import "./App.css";
-import DefaultView from "./customComponent/DefaultView";
-import { EContainer } from "./customComponent/customComponents";
+import DefaultView from "./components/container/DefaultView";
+import { EContainer } from "./styles/customComponents";
 import LandingMain from "./pages/Landing/LandingMain";
 
 function App() {

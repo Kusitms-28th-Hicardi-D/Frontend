@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import Carousel from "../../customComponent/carousel/Carousel";
-import { FlexBox, Words } from "../../customComponent/customComponents";
-import { Color } from "../../asset/Color";
+import Carousel from "../../components/carousel/Carousel";
+import { FlexBox, Words } from "../../styles/customComponents";
+import { Color } from "../../assets/color/Color";
 import { useEffect, useState } from "react";
 import React from "react";
 import UsagePart from "./Usage";

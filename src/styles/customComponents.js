@@ -34,4 +34,4 @@ export const Words = styled.p`
   font-weight: ${(props) => (props.bold ? "500" : "0")};
 `;
 
-// ------ Animations ------
+// ------ Animations ------ //

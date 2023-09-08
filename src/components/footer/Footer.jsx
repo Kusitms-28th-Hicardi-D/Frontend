@@ -1,7 +1,5 @@
 import { styled } from "styled-components";
-import { Color } from "../asset/Color";
-import { FlexBox, Words } from "./customComponents";
-
+import { FlexBox, Words } from "../../styles/customComponents";
 const assets = {
   registerNum1: "204-86-40122",
   brand: "동아에스티(주)",

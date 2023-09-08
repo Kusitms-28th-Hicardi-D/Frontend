@@ -1,13 +1,9 @@
 import { styled } from "styled-components";
-import DefaultView from "../../customComponent/DefaultView";
-import {
-  EContainer,
-  FlexBox,
-  Words,
-} from "../../customComponent/customComponents";
+import DefaultView from "../../components/container/DefaultView";
+import { EContainer, FlexBox, Words } from "../../styles/customComponents";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { Color } from "../../asset/Color";
+import { Color } from "../../assets/color/Color";
 
 const ViewContainer = styled(FlexBox)`
   align-items: center;

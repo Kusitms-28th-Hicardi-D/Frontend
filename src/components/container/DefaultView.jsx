@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../footer/Footer";
+import Header from "../header/Header";
 
 const ViewContainer = styled.div`
   display: flex;
