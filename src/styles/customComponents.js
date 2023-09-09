@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-// ------ Container ------
+// ------ Container ------ //
 export const EContainer = styled.div`
   min-height: "100vh";
 `;
@@ -9,13 +9,13 @@ export const PContainer = styled.div`
   flex-flow: column wrap;
 `;
 
-// ------ Box -------
+// ------ Box ------- //
 export const FlexBox = styled.div`
   display: flex;
   flex-flow: ${(props) => (props.column ? "column wrap" : "row wrap")};
 `;
 
-// ------ Texts ------
+// ------ Texts ------ //
 export const Words = styled.p`
   font-size: ${(props) =>
     props.size1

@@ -3,6 +3,7 @@ import { FlexBox, Words } from "../../styles/customComponents";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
+
 const HeaderWrapper = styled(FlexBox)`
   padding: 0.5% 1% 0.5% 1%;
   max-width: 100vw;

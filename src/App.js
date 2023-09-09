@@ -1,15 +1,13 @@
-import "./App.css";
-import DefaultView from "./components/container/DefaultView";
-import { EContainer } from "./styles/customComponents";
-import LandingMain from "./pages/Landing/LandingMain";
+import GlobalStyle from "./styles/GlobalStyle";
+import Router from "./Router";
+import React from "react";
 
 function App() {
   return (
-    <DefaultView>
-      <EContainer>
-        <LandingMain />
-      </EContainer>
-    </DefaultView>
+    <React.Fragment>
+      <GlobalStyle />
+      <Router />
+    </React.Fragment>
   );
 }
 

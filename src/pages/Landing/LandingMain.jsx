@@ -4,29 +4,7 @@ import { FlexBox, Words } from "../../styles/customComponents";
 import { Color } from "../../assets/color/Color";
 import { useEffect, useState } from "react";
 import React from "react";
-import UsagePart from "./Usage";
-
-const ViewContainer = styled.div`
-  min-height: 70vh;
-  display: flex;
-  flex-flow: column wrap;
-  width: 100vw;
-`;
-
-const SlideContainer = styled.div`
-  width: 88%;
-  align-self: center;
-  display: flex;
-  flex-flow: row wrap;
-  border-radius: 10px;
-  background-color: aliceblue;
-  justify-content: flex-end;
-
-  padding-right: 10%;
-  padding-top: 10%;
-  margin-top: 3%;
-  margin-bottom: 3%;
-`;
+import UsagePart from "./component/Usage";
 
 const Images = [
   "https://ecimg.cafe24img.com/pg189b34772306057/hicardi/web/images/mainbanner6.png",
@@ -118,4 +96,27 @@ function LandingMain() {
     </ViewContainer>
   );
 }
+
+const ViewContainer = styled.div`
+  min-height: 70vh;
+  display: flex;
+  flex-flow: column wrap;
+  width: 100vw;
+`;
+
+const SlideContainer = styled.div`
+  width: 88%;
+  align-self: center;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 10px;
+  background-color: aliceblue;
+  justify-content: flex-end;
+
+  padding-right: 10%;
+  padding-top: 10%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+`;
+
 export default LandingMain;
