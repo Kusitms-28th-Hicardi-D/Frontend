@@ -3,6 +3,8 @@ import DefaultView from "./components/container/DefaultView";
 import LandingMain from "./pages/Landing/LandingMain";
 import LoginMain from "./pages/Login/LoginMain";
 import React from "react";
+import NewsMain from "./pages/PressCenter/News/NewsMain";
+import ReportMain from "./pages/PressCenter/Report/ReportMain";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,26 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <LoginMain />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/pressCenter/news",
+    element: (
+      <>
+        <DefaultView>
+          <NewsMain />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/pressCenter/report",
+    element: (
+      <>
+        <DefaultView>
+          <ReportMain />
         </DefaultView>
       </>
     ),
