@@ -3,11 +3,12 @@ import { FlexBox, Words } from "../../styles/customComponents";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { Color } from "../../assets/color/Color";
+import { useNavigate } from "react-router-dom";
 
 function LoginMain() {
   const [id, setId] = useState();
   const [pw, setPw] = useState();
-
+  const navigate = useNavigate();
   return (
     <ViewContainer column>
       <LoginBox column>
@@ -76,6 +77,9 @@ function LoginMain() {
               borderColor: Color.componentColor.BorderGray,
               borderRadius: "30px",
               color: "black",
+            }}
+            onClick={() => {
+              navigate("/signup");
             }}
           >
             회원가입

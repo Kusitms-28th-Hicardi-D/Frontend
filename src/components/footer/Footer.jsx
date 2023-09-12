@@ -13,17 +13,20 @@ const assets = {
 const Container = styled.div`
   background-color: black;
   min-height: 10vh;
+  max-width: 100%;
   margin-top: auto;
   display: flex;
   flex-flow: row wrap;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  flex-shrink: 0;
+
+  justify-content: space-around;
+  box-sizing: border-box;
+  height: max-content;
+  padding-top: 2%;
+  padding-bottom: 2%;
 `;
 
 const FooterItem = styled(FlexBox)`
-  flex: 1 1 50%;
   justify-content: center;
 `;
 
@@ -72,6 +75,7 @@ function Footer() {
         column
         style={{
           alignItems: "flex-end",
+          justifyContent: "space-evenly",
         }}
       >
         <FooterWord size1 white underline>

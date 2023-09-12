@@ -101,20 +101,24 @@ const ViewContainer = styled.div`
   min-height: 70vh;
   display: flex;
   flex-flow: column wrap;
-  width: 100vw;
+  width: 100%;
 `;
 
 const SlideContainer = styled.div`
-  width: 88%;
+  width: 95%;
   align-self: center;
+
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
+
   border-radius: 10px;
   background-color: aliceblue;
-  justify-content: flex-end;
 
-  padding-right: 10%;
-  padding-top: 10%;
+  box-sizing: border-box;
+
+  padding: 5% 1% 2% 1%;
+
   margin-top: 3%;
   margin-bottom: 3%;
 `;
