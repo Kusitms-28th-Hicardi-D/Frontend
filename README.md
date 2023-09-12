@@ -1,3 +1,5 @@
+<h2>하이카디 D팀 프론트엔드</h2>
+
 ## 팀원 소개
 
 |                                           FrontEnd                                           |                                         FrontEnd                                          |            
