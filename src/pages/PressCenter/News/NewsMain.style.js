@@ -9,11 +9,19 @@ export const ViewContainer = styled.div`
 `
 
 export const Banner = styled.div`
+height: auto;
 border-radius: 20px;
+margin-bottom: 2rem;
+`
+
+export const BannerContents = styled.div`
+padding: 3rem;
+padding-top:5%;
+padding-bottom: 10%;
+
 background: url(${bannerBg}), lightgray 50% / cover no-repeat;
 background-size: cover;
-padding: 3rem;
-margin-bottom: 2rem;
+border-radius: 20px;
 `
 
 export const BannerTxt = styled.div`
@@ -33,7 +41,7 @@ margin-bottom: 2rem;
 
 export const BannerBtn = styled.div`
 display: flex;
-width: 30%;
+width: 250px;
 height: 10%;
 padding: 0.5rem 1rem;
 justify-content: space-between;
@@ -129,7 +137,7 @@ cursor: pointer;
 export const List = styled.div`
 display: flex;
 flex-direction: column;
-gap: 1rem;
+gap: 1rem; 
 margin-bottom: 1.8rem;
 `
 
@@ -191,18 +199,11 @@ align-items: center;
 margin-bottom: 3rem;
 `
 
-
-export const LeftArrow = styled.img`
-
-`
-
-
 export const PageNums = styled.div`
 display: flex;
 align-items: center;
 gap: 0.5rem;
 `
-
 
 export const PageNum = styled.div`
 display: flex;
@@ -221,9 +222,4 @@ font-family: Noto Sans CJK KR;
 font-size: 1rem;
 font-weight: 700;
 cursor: pointer;
-`
-
-
-export const RightArrow = styled.img`
-
 `

@@ -5,6 +5,9 @@ import LoginMain from "./pages/Login/LoginMain";
 import React from "react";
 import NewsMain from "./pages/PressCenter/News/NewsMain";
 import ReportMain from "./pages/PressCenter/Report/ReportMain";
+import NewsDetail from "./pages/PressCenter/News/NewsDetail";
+import NewsSub from "./pages/PressCenter/News/NewsSub";
+import ProductionMain from './pages/Production/ProductionMain';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,36 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <ReportMain />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/pressCenter/news/:newsId",
+    element: (
+      <>
+        <DefaultView>
+          <NewsDetail />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/pressCenter/news/sub",
+    element: (
+      <>
+        <DefaultView>
+          <NewsSub />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/production",
+    element: (
+      <>
+        <DefaultView>
+          <ProductionMain />
         </DefaultView>
       </>
     ),
