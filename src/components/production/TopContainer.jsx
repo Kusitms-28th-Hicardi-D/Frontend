@@ -1,19 +1,19 @@
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function TopContainer(props) {
   const [title, setTitle] = useState("ddd");
 
   useEffect(() => {
-    if (props.selectedMenu === "hicardi") setTitle("ddd");
+    if (props.selectedMenu === "hicardi") setTitle("편리하게 심전도 측정");
     if (props.selectedMenu === "nonin") setTitle("sss");
     if (props.selectedMenu === "additional") setTitle("aaa");
   }, [props.selectedMenu]);
 
   return (
-    <Background>
+    <Background> 
       <TxtContainer>
         <Title>{title}</Title>
         <BuyBtn
@@ -27,7 +27,7 @@ export default function TopContainer(props) {
       </TxtContainer>
       <Carousel />
     </Background>
-  );
+  ); 
 }
 
 const Background = styled.div`
