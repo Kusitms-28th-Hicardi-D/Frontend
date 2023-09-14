@@ -191,7 +191,7 @@ width: 20%;
 background: var(--ui-surface-04, #E8F7FC);
 `
 
-
+// 페이지네이션
 export const Pagination = styled.div`
 display: flex;
 justify-content: space-between;

@@ -8,6 +8,7 @@ import ReportMain from "./pages/PressCenter/Report/ReportMain";
 import NewsDetail from "./pages/PressCenter/News/NewsDetail";
 import NewsSub from "./pages/PressCenter/News/NewsSub";
 import ProductionMain from './pages/Production/ProductionMain';
+import BoardMain from './pages/Board/BoardMain';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <ProductionMain />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/board",
+    element: (
+      <>
+        <DefaultView>
+          <BoardMain />
         </DefaultView>
       </>
     ),
