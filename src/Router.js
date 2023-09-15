@@ -5,6 +5,7 @@ import LoginMain from "./pages/Login/LoginMain";
 import React from "react";
 import SignUpPage from "./pages/SignUp/SignUpPage";
 import HolterPage from "./pages/Introduce/Holter/HolterPage";
+import DemoPage from "./pages/Demo/DemoPage";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <HolterPage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/holterIntroduce/demo",
+    element: (
+      <>
+        <DefaultView>
+          <DemoPage />
         </DefaultView>
       </>
     ),

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
+import { Container, FooterItem, FooterWord } from "./Footer.style";
 const assets = {
   registerNum1: "204-86-40122",
   brand: "동아에스티(주)",
@@ -9,33 +10,6 @@ const assets = {
   registerNum2: "제2022-서울동대문-1374호",
   registerNum3: "제 2003-3050034-00003 호",
 };
-
-const Container = styled.div`
-  background-color: black;
-  min-height: 10vh;
-  max-width: 100%;
-  margin-top: auto;
-  display: flex;
-  flex-flow: row wrap;
-  flex-shrink: 0;
-
-  justify-content: space-around;
-  box-sizing: border-box;
-  height: max-content;
-  padding-top: 2%;
-  padding-bottom: 2%;
-`;
-
-const FooterItem = styled(FlexBox)`
-  justify-content: center;
-`;
-
-const FooterWord = styled(Words)`
-  margin: 0;
-  margin-bottom: 1.5%;
-  padding: 0;
-  border-bottom: ${(props) => (props.underline ? "1px solid #1aabde" : "0")};
-`;
 
 function Footer() {
   return (

@@ -1,18 +1,96 @@
-import { styled } from "styled-components";
-import { FlexBox, Words } from "../../styles/customComponents";
-import { Button, TextField } from "@mui/material";
+import { Words } from "../../styles/customComponents";
+import {
+  Button,
+  FilledInput,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  TextField,
+} from "@mui/material";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
+import Swal from "sweetalert2";
 import { useState } from "react";
 import { Color } from "../../assets/color/Color";
 import { useNavigate } from "react-router-dom";
+import {
+  LoginBox,
+  LoginBtnBox,
+  LoginInputBox,
+  LoginTitleBox,
+  LoginUtilList,
+  ViewContainer,
+} from "./LoginMain.style";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { auth } from "../../firebase/googleAuth";
 
 function LoginMain() {
+  // navigation
+  const navigation = useNavigate();
+  // id, pw
   const [id, setId] = useState();
   const [pw, setPw] = useState();
-  const navigate = useNavigate();
+  // pw
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  //
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleLogin();
+    }
+  };
+
+  // login
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, id, pw)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        if (user) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        });
+
+        Toast.fire({
+          icon: "error",
+          title: "Invalid User Information",
+        });
+      });
+  };
   return (
     <ViewContainer column>
       <LoginBox column>
-        <FlexBox column style={{ alignItems: "center", marginBottom: "3%" }}>
+        <LoginTitleBox>
           <Words
             style={{
               fontSize: "2rem",
@@ -25,8 +103,8 @@ function LoginMain() {
           <Words size3 sub style={{ margin: 0, padding: 0 }}>
             회원이 되시면 다양한 혜택과 서비스를 받으실 수 있습니다.
           </Words>
-        </FlexBox>
-        <FlexBox column style={{ width: "80%" }}>
+        </LoginTitleBox>
+        <LoginInputBox>
           <TextField
             id="filled-basic"
             label="아이디"
@@ -37,19 +115,38 @@ function LoginMain() {
               setId(e.target.value);
             }}
           />
-          <TextField
-            id="filled-basic"
-            label="비밀번호"
+
+          <FormControl
+            sx={{ m: 1, width: "100%", marginLeft: "0" }}
             variant="filled"
-            style={{ width: "100%" }}
-            value={pw}
-            onChange={(e) => {
-              setPw(e.target.value);
-            }}
-            type="password"
-          />
-        </FlexBox>
-        <FlexBox column style={{ width: "70%", marginTop: "3%" }}>
+          >
+            <InputLabel htmlFor="filled-adornment-password">
+              Password
+            </InputLabel>
+            <FilledInput
+              value={pw}
+              onChange={(e) => {
+                setPw(e.target.value);
+              }}
+              onKeyDown={handleKeyDown}
+              id="filled-adornment-password"
+              type={showPassword ? "text" : "password"}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </LoginInputBox>
+        <LoginBtnBox>
           <Button
             variant="contained"
             style={{
@@ -60,6 +157,9 @@ function LoginMain() {
               paddingBottom: "3%",
               backgroundColor: Color.componentColor.ButtonBlue,
               borderRadius: "30px",
+            }}
+            onClick={() => {
+              handleLogin();
             }}
           >
             로그인
@@ -79,53 +179,20 @@ function LoginMain() {
               color: "black",
             }}
             onClick={() => {
-              navigate("/signup");
+              navigation("/signup");
             }}
           >
             회원가입
           </Button>
-        </FlexBox>
+        </LoginBtnBox>
         <LoginUtilList className="login__util">
           <li>아이디 찾기</li>
           <li>비밀번호 찾기</li>
+          <li>구글로 로그인</li>
         </LoginUtilList>
       </LoginBox>
     </ViewContainer>
   );
 }
-
-const ViewContainer = styled(FlexBox)`
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  min-height: 80vh;
-`;
-
-const LoginBox = styled(FlexBox)`
-  align-items: center;
-  width: 50%;
-`;
-
-const LoginUtilList = styled.ul`
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  width: 100%;
-
-  padding: 0;
-  li {
-    font-size: 0.8rem;
-    color: gray;
-  }
-  li:not(:last-child):after {
-    content: "";
-    display: inline-block;
-    width: 1px;
-    height: 17px;
-    margin: 0 8px 0 12px;
-    vertical-align: top;
-    background: #e0e0e0;
-  }
-`;
 
 export default LoginMain;
