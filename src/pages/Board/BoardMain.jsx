@@ -1,23 +1,43 @@
 import * as S from "./BoardMain.style";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FAQ from "../../components/board/FAQ";
 import { useNavigate } from "react-router-dom";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import SearchIcon from "@mui/icons-material/Search";
+import axios from "axios";
+import Pagination from "../../components/pagination/pagination";
 
 export default function () {
-  const listData = [
-    ["1", "제목", "2023/09/15", "102"],
-    ["2", "제목", "2023/09/15", "102"],
-    ["3", "제목", "2023/09/15", "102"],
-    ["4", "제목", "2023/09/15", "102"],
-    ["5", "제목", "2023/09/15", "102"],
-    ["6", "제목", "2023/09/15", "102"],
-    ["7", "제목", "2023/09/15", "102"],
-  ];
-
   const navigate = useNavigate();
   const [selectedMenu, setSelectedMenu] = useState("notice");
+  const [listData, setListData] = useState([]);
+  const [totalPage, setTotalPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const fetchData = async () => {
+    await axios
+      .get(`http://15.164.149.157:8082/api/board/notice`)
+      .then((res) => {
+        console.log(res);
+        res.data.result.content.forEach((el, idx) => {
+          setListData((prev) => [
+            ...prev,
+            {
+              id: el.id,
+              item: [idx, el.title, el.createdDate, el.viewCount],
+            },
+          ]);
+          setTotalPage(res.data.result.totalPage);
+        });
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const NewlineText = (text) =>
     text.split("\n").map((str) => (
@@ -29,11 +49,12 @@ export default function () {
 
   const onClickMenu = (event) => {
     setSelectedMenu(event.target.id);
-    console.log(event);
   };
 
   const onClickItem = (event) => {
-    navigate(`/board/qna/${event.currentTarget.id}`);
+    selectedMenu === "qna"
+      ? navigate(`/board/qna/${event.currentTarget.id}`) // qna 상세보기
+      : navigate(`/board/qna/${event.currentTarget.id}`); // 공지사항 상세보기
   };
 
   return (
@@ -71,21 +92,21 @@ export default function () {
         <>
           {/* 표 상단 */}
           <S.ListTop>
-            <S.ListCnt>
+            <S.ListCnt onClick={() => console.log(listData)}>
               게시글 총 <S.ListCntNum>134</S.ListCntNum>건
             </S.ListCnt>
             <S.ListFilter>
               <S.DateFilterCategoryBox>
                 <S.FilterCategory>일주일</S.FilterCategory>
-                <S.FilterCategoryArrow />
+                <ArrowDropDownIcon />
               </S.DateFilterCategoryBox>
               <S.TitleFilterCategoryBox>
                 <S.FilterCategory>제목</S.FilterCategory>
-                <S.FilterCategoryArrow />
+                <ArrowDropDownIcon />
               </S.TitleFilterCategoryBox>
               <S.FilterInputBox>
                 <S.FilterInput placeholder="검색어를 입력해주세요." />
-                <S.FilterSearch />
+                <SearchIcon />
               </S.FilterInputBox>
             </S.ListFilter>
           </S.ListTop>
@@ -103,9 +124,13 @@ export default function () {
               </tr>
             </thead>
             <tbody>
-              {listData.map((el) => (
-                <tr id="d" style={{ cursor: "pointer" }} onClick={onClickItem}>
-                  {el.map((element) => (
+              {listData?.map((el) => (
+                <tr
+                  id={el.id}
+                  style={{ cursor: "pointer" }}
+                  onClick={onClickItem}
+                >
+                  {el.item?.map((element) => (
                     <S.TableCell>{element}</S.TableCell>
                   ))}
                 </tr>
@@ -120,17 +145,11 @@ export default function () {
             </S.BtnContainer>
           )}
 
-          <S.Pagination>
-            <KeyboardArrowLeft style={{ cursor: "pointer" }} />
-            <S.PageNums>
-              <S.PageNum selected>1</S.PageNum>
-              <S.PageNum>2</S.PageNum>
-              <S.PageNum>3</S.PageNum>
-              <S.PageNum>4</S.PageNum>
-              <S.PageNum>5</S.PageNum>
-            </S.PageNums>
-            <KeyboardArrowRight style={{ cursor: "pointer" }} />
-          </S.Pagination>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPage={totalPage}
+          />
         </>
       )}
     </S.ViewContainer>

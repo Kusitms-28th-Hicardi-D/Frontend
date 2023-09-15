@@ -6,6 +6,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
+import Pagination from "../../../components/pagination/pagination";
 
 export default function NewsMain() {
   const navigate = useNavigate();
@@ -108,7 +109,7 @@ export default function NewsMain() {
           </S.ListItem>
         ))}
       </S.List>
-      <S.Pagination>
+      {/* <S.Pagination>
         <KeyboardArrowLeftIcon
           style={{ cursor: "pointer", visibility: data.totalPage>5 ? "visible" : "hidden" }}
           onClick={goToPreviousPage}
@@ -127,7 +128,13 @@ export default function NewsMain() {
           style={{ cursor: "pointer", visibility: data.totalPage>5 ? "visible" : "hidden" }}
           onClick={goToNextPage}
         />
-      </S.Pagination>
+      </S.Pagination> */}
+      
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPage={data.totalPage}
+      />
     </S.ViewContainer>
   );
 }

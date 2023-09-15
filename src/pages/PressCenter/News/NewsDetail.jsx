@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function NewsDetail() {
   const { newsId } = useParams();
   const [data, setData] = useState({})
+  
   // 데이터 불러오기
   const fetchData = async () => {
     await axios

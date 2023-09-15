@@ -1,25 +1,48 @@
 import * as S from "./BoardDetail.style";
 import qstIcon from "../../assets/icon/Q.svg";
 import ansIcon from "../../assets/icon/A.svg";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function BoardDetail() {
+  const { qnaId } = useParams();
+  const [data, setData] = useState({});
+
+  // 데이터 불러오기
+  const fetchQnaData = async () => {
+    await axios
+      .get(`http://15.164.149.157/api/board/qna/${qnaId}`)
+      .then((res) => {
+        console.log(res);
+        setData({ ...res.data.result });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchQnaData();
+  }, []);
+
   return (
     <S.ViewContainer>
       <S.TitleWrapper>
         <img src={qstIcon} />
-        <S.Title>상품 문의 제목</S.Title>
+        <S.Title>{data.title}</S.Title>
       </S.TitleWrapper>
       <S.PostInfoWrapper>
-        <S.PostInfo>작성자</S.PostInfo>
-        <S.PostInfo>작성일자</S.PostInfo>
+        <S.PostInfo>{data.writer}</S.PostInfo>
+        <S.PostInfo>{data.date}</S.PostInfo>
       </S.PostInfoWrapper>
-      <S.QstBox>질문이 들어갈거에요</S.QstBox>
+      <S.QstBox>{data.question}</S.QstBox>
 
       <S.TitleWrapper>
         <img src={ansIcon} />
         <S.AnsTitle>답변내용</S.AnsTitle>
       </S.TitleWrapper>
-      <S.AnsBox>답변이 들어갈거에요</S.AnsBox>
+      <S.AnsBox>{data.answer}</S.AnsBox>
     </S.ViewContainer>
   );
 }
