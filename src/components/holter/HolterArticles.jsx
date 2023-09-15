@@ -39,14 +39,13 @@ const EContainer = styled(FlexBox)`
   padding: 5% 3% 5% 3%;
   box-sizing: border-box;
 `;
-
 const ArticleContainer = styled(FlexBox)`
   width: 100%;
   padding: 5% 5% 5% 5%;
-  flex: row wrap;
+  flex-flow: row wrap;
   box-sizing: border-box;
-  justify-content: flex-start;
-  align-content: space-around;
+  justify-content: center;
+  align-content: flex-start;
 `;
 
 const Word = styled(Words)`
