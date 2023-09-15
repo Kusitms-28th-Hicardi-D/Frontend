@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Words } from '../../../styles/customComponents';
 import bannerBg from '../../../assets/img/BannerBg.png'
 
 export const ViewContainer = styled.div`
@@ -29,6 +28,7 @@ color: var(--ui-surface-05, #C8ECF7);
 font-family: Noto Sans CJK KR;
 font-weight: 700;
 font-size: 1.2rem;
+margin-bottom: 1rem;
 `
 
 export const BannerTitle = styled.div`
@@ -36,6 +36,7 @@ color: var(--text-text-06, #FFF);
 font-family: Noto Sans CJK KR;
 font-size: 2rem;
 font-weight: 700;
+line-height: 2.8rem;
 margin-bottom: 2rem;
 `
 

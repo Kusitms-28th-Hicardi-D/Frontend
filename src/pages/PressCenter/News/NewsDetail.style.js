@@ -28,6 +28,12 @@ export const PostInfo = styled.div`
   font-weight: 500;
 `;
 
+export const Slash = styled.div`
+  height: 0.6rem;
+  width: 1px;
+  background-color: #8b8b8b;
+`
+
 export const Contents = styled.div`
   padding: 1.5rem 1rem;
   margin-bottom: 2.5rem;
