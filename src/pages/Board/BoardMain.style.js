@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ViewContainer = styled.div`
-  margin: auto;
+  margin: auto; 
   width: 90vw;
   max-width: 1200px;
 `;

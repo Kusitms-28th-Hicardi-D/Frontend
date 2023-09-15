@@ -3,6 +3,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import React, { useState } from "react";
 import FAQ from "../../components/board/FAQ";
+import { useNavigate } from "react-router-dom";
 
 export default function () {
   const listData = [
@@ -15,6 +16,7 @@ export default function () {
     ["7", "제목", "2023/09/15", "102"],
   ];
 
+  const navigate = useNavigate();
   const [selectedMenu, setSelectedMenu] = useState("notice");
 
   const NewlineText = (text) =>
@@ -27,6 +29,11 @@ export default function () {
 
   const onClickMenu = (event) => {
     setSelectedMenu(event.target.id);
+    console.log(event);
+  };
+
+  const onClickItem = (event) => {
+    navigate(`/board/qna/${event.currentTarget.id}`);
   };
 
   return (
@@ -97,7 +104,7 @@ export default function () {
             </thead>
             <tbody>
               {listData.map((el) => (
-                <tr style={{ cursor: "pointer" }}>
+                <tr id="d" style={{ cursor: "pointer" }} onClick={onClickItem}>
                   {el.map((element) => (
                     <S.TableCell>{element}</S.TableCell>
                   ))}

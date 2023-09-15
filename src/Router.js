@@ -9,6 +9,7 @@ import NewsDetail from "./pages/PressCenter/News/NewsDetail";
 import NewsSub from "./pages/PressCenter/News/NewsSub";
 import ProductionMain from './pages/Production/ProductionMain';
 import BoardMain from './pages/Board/BoardMain';
+import BoardDetail from './pages/Board/BoardDetail';
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <BoardMain />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/board/qna/:qnaId",
+    element: (
+      <>
+        <DefaultView>
+          <BoardDetail />
         </DefaultView>
       </>
     ),
