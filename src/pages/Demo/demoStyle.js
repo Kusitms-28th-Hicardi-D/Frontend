@@ -15,6 +15,7 @@ const media = {
 };
 
 export const ViewContainer = styled(FlexBox)`
+  margin: auto;
   width: 80%;
   flex-flow: column nowrap;
   align-items: center;
@@ -52,11 +53,14 @@ export const WordBox = styled(FlexBox)`
 
 export const Title = styled(Words)`
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
 `;
 export const SubTitle = styled(Words)`
   font-size: 1.5rem;
   color: var(--text-text-03, #8b8b8b);
+  letter-spacing: 0.1rem;
 `;
 
 export const FormBox = styled(FlexBox)`

@@ -15,3 +15,25 @@ export const getItems = async () => {
   const response = await axiosInstance.get(url);
   return response.data;
 };
+
+export const postDemo = async ({
+  name: name,
+  company: company,
+  clinic: clinic,
+  email: email,
+  contact: contact,
+  solution: solution,
+  content: content,
+}) => {
+  const url = `/api/product/demo`;
+  const response = await axiosInstance.post(url, {
+    name: name,
+    company: company,
+    clinic: clinic,
+    email: email,
+    contact: contact,
+    solution: solution,
+    content: content,
+  });
+  return response.data;
+};

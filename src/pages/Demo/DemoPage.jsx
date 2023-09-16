@@ -12,9 +12,12 @@ import {
   WordBox,
 } from "./demoStyle";
 import { TextField } from "@mui/material";
+import { postDemo } from "../../apis/axiosInstance";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function DemoPage() {
-  console.log("render");
+  const navigate = useNavigate();
   const [name, setName] = useState();
   const [company, setCompany] = useState();
   const [major, setMajor] = useState();
@@ -23,6 +26,35 @@ function DemoPage() {
   const [solution, setSolution] = useState();
   const [other, setOther] = useState();
   const [isAllFinished, setIsAllFinished] = useState(false);
+
+  const postForm = async () => {
+    try {
+      const formattedSolution =
+        solution === 1 ? "환자 모니터링 솔루션" : "홀터 솔루션";
+      const response = await postDemo({
+        name: name,
+        company: company,
+        clinic: major,
+        email: email,
+        contact: phoneNum,
+        solution: formattedSolution,
+        content: other,
+      });
+      console.log(response.isSuccess);
+      if (response.isSuccess) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "데모신청이 제출되었습니다!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     setIsAllFinished(name && company && major && email && phoneNum && solution);
@@ -126,7 +158,15 @@ function DemoPage() {
             }}
           />
         </FormWrapper>
-        <SubmitBtn variant="outlined" disabled={!isAllFinished}>
+        <SubmitBtn
+          variant="outlined"
+          disabled={!isAllFinished}
+          onClick={() => {
+            if (isAllFinished) postForm();
+            else {
+            }
+          }}
+        >
           제출하기
         </SubmitBtn>
       </FormBox>

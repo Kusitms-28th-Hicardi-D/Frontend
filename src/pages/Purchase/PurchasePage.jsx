@@ -108,13 +108,15 @@ function PurchasePage() {
                   <ItemSubTitle>{element.content}</ItemSubTitle>
                 </TextWrapper>
                 <OrderBtnWrapper>
-                  <ItemPrice>{element.price.toLocaleString()}</ItemPrice>
+                  <ItemPrice>
+                    {element.price !== 0 && element.price.toLocaleString()}
+                  </ItemPrice>
                   <OrderBtnBox>
                     <BtnWrapper>
-                      <ShoppingCartSharpIcon />
+                      <ShoppingCartSharpIcon style={{ fontSize: "2rem" }} />
                     </BtnWrapper>
                     <BtnWrapper>
-                      <FavoriteSharpIcon />
+                      <FavoriteSharpIcon style={{ fontSize: "2rem" }} />
                     </BtnWrapper>
                   </OrderBtnBox>
                 </OrderBtnWrapper>
