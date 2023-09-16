@@ -91,7 +91,7 @@ function PurchasePage() {
             추가 서비스
           </IndexBtn>
         </IndexBtnWrapper>
-        <Dropdown>dropdown</Dropdown>
+        {/* <Dropdown>dropdown</Dropdown> */}
       </IndexContainer>
       <ProductContainer>
         {items &&
