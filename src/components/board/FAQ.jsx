@@ -229,6 +229,7 @@ export default function FAQ() {
 
 const MenuBar = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
 
@@ -272,6 +273,7 @@ const QstTxt = styled.div`
   color: var(--text-text-02, #555);
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.5rem;
 `;
 
 const QstBtn = styled.button`
@@ -291,4 +293,9 @@ const AswTxt = styled.div`
   color: var(--text-text-02, #555);
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 95%
+  }
 `;

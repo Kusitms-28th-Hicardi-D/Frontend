@@ -79,16 +79,15 @@ export const ListCntNum = styled.span`
 `;
 
 export const ListFilter = styled.div`
+  position: relative;
   display: flex;
-  width: 40%;
-  max-width: 450px;
   height: 2rem;
   box-shadow: 0px 0px 5px 0px rgba(0, 51, 150, 0.25);
   border-radius: 5px;
 `;
 
 export const FilterCategoryBox = styled.div`
-  width: 25%;
+  width: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,6 +95,7 @@ export const FilterCategoryBox = styled.div`
   border-right: 2px solid var(--gray-gray-70, #dfdfdf);
   background: var(--ui-surface, #fff);
   padding-left: 0.5rem;
+  cursor: pointer;
 `;
 
 export const FilterCategory = styled.div`
@@ -109,14 +109,14 @@ export const FilterCategoryArrow = styled.img`
   cursor: pointer;
 `;
 
-export const FilterInputBox = styled.div`
-  width: 75%;
+export const FilterInputBox = styled.form`
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 0px 5px 5px 0px;
   background: var(--ui-surface, #fff);
-  padding-left: 0.5rem;
+  padding: 0 0.5rem;
 `;
 
 export const FilterInput = styled.input`
@@ -130,8 +130,31 @@ export const FilterInput = styled.input`
   outline: none;
 `;
 
-export const FilterSearch = styled.img`
+export const FilterBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FilterCmbBox = styled.div`
+  position: absolute;
+  width: 100px;
+  top: calc(2rem + 10px);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 51, 150, 0.25);
+  background-color: #fff;
+`;
+
+export const FilterCmbItem = styled.div`
+  color: var(--text-text-01, #242424);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 1rem 0.5rem;
   cursor: pointer;
+
+  &:hover {
+    color: #19afdd;
+  }
 `;
 
 export const List = styled.div`

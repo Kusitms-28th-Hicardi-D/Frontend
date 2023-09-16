@@ -38,7 +38,7 @@ font-weight: 700;
 
 export const Input = styled.input`
 color: var(--text-text-03, #8B8B8B);
-width: calc(100% - 2rem);
+width: 100%;
 padding: 0.8rem 1rem;
 border: none;
 outline: none;
@@ -54,14 +54,12 @@ font-weight: 500;
 export const SubmitBtn = styled.div`
 margin-top: 1.5rem;
 padding: 1rem 0rem;
-align-items: center;
 border: 2px solid var(--ui-primary, #19AFDD);
 color: var(--ui-primary, #19AFDD);
 text-align: center;
 cursor: pointer;
 margin-bottom: 5rem;
 
-font-family: Noto Sans CJK KR;
 font-size: 1rem;
 font-style: normal;
 font-weight: 700;

@@ -79,16 +79,15 @@ export const ListCntNum = styled.span`
 `;
 
 export const ListFilter = styled.div`
+  position: relative;
   display: flex;
-  width: 40%;
-  max-width: 450px;
   height: 2rem;
   box-shadow: 0px 0px 5px 0px rgba(0, 51, 150, 0.25);
   border-radius: 5px;
 `;
 
 export const FilterCategoryBox = styled.div`
-  width: 25%;
+  width: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,6 +95,7 @@ export const FilterCategoryBox = styled.div`
   border-right: 2px solid var(--gray-gray-70, #dfdfdf);
   background: var(--ui-surface, #fff);
   padding-left: 0.5rem;
+  cursor: pointer;
 `;
 
 export const FilterCategory = styled.div`
@@ -109,14 +109,14 @@ export const FilterCategoryArrow = styled.img`
   cursor: pointer;
 `;
 
-export const FilterInputBox = styled.div`
-  width: 75%;
+export const FilterInputBox = styled.form`
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 0px 5px 5px 0px;
   background: var(--ui-surface, #fff);
-  padding-left: 0.5rem;
+  padding: 0 0.5rem;
 `;
 
 export const FilterInput = styled.input`
@@ -130,8 +130,31 @@ export const FilterInput = styled.input`
   outline: none;
 `;
 
-export const FilterSearch = styled.img`
+export const FilterBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FilterCmbBox = styled.div`
+  position: absolute;
+  width: 100px;
+  top: calc(2rem + 10px);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 51, 150, 0.25);
+  background-color: #fff;
+`;
+
+export const FilterCmbItem = styled.div`
+  color: var(--text-text-01, #242424);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 1rem 0.5rem;
   cursor: pointer;
+
+  &:hover {
+    color: #19afdd;
+  }
 `;
 
 export const List = styled.div`
@@ -143,6 +166,8 @@ export const List = styled.div`
 
 export const ListItem = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: antiquewhite;
   border-radius: 8px;
   background: var(--ui-surface-01, #f6f6f6);
@@ -150,7 +175,7 @@ export const ListItem = styled.div`
 `;
 
 export const ListTxt = styled.div`
-  width: 80%;
+  width: 70%;
   background: var(--ui-surface-01, #f6f6f6);
   padding: 1.5rem 1.2rem;
 `;
@@ -159,7 +184,7 @@ export const ListTitle = styled.div`
   overflow: hidden;
   color: var(--text-text-01, #242424);
   text-overflow: ellipsis;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 
   font-family: Noto Sans CJK KR;
   font-size: 1.2rem;
@@ -182,9 +207,17 @@ export const ListCreatedAt = styled(ListWriter)`
   color: var(--text-text-04, #c1c1c1);
 `;
 
+export const ListImgWrapper = styled.div`
+  width: 300px;
+  height: 10rem;
+  background-color: blue;
+  overflow: hidden;
+`;
+
 export const ListImg = styled.img`
-  width: 20%;
-  background: var(--ui-surface-04, #e8f7fc);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 // 페이지네이션

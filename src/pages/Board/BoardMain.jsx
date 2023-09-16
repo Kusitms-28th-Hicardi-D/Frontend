@@ -12,76 +12,15 @@ export default function () {
   const [selectedMenu, setSelectedMenu] = useState("notice");
   const [listData, setListData] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
+  const [totalElements, setTotalElements] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchQnaData = async () => {
-    await axios
-      .get(`http://15.164.149.157:8082/api/board/qna`)
-      .then((res) => {
-        console.log(res);
-        setListData([]);
-        res.data.result.content.forEach((el) => {
-          setListData((prev) => [
-            ...prev,
-            {
-              id: el.id,
-              item: [el.num, el.title, el.createdDate, el.viewCount],
-            },
-          ]);
-          setTotalPage(res.data.result.totalPage);
-        });
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const fetchNoticeData = async () => {
-    await axios
-      .get(`http://15.164.149.157:8082/api/board/notice`)
-      .then((res) => {
-        console.log(res);
-        setListData([]);
-        res.data.result.content.forEach((el) => {
-          setListData((prev) => [
-            ...prev,
-            {
-              id: el.id,
-              item: [el.num, el.title, el.createdDate, el.viewCount],
-            },
-          ]);
-          setTotalPage(res.data.result.totalPage);
-        });
-      })
-      .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {
-    selectedMenu === "qna" && fetchQnaData();
-    selectedMenu === "notice" && fetchNoticeData();
-  }, [selectedMenu]);
-
-  const NewlineText = (text) =>
-    text.split("\n").map((str) => (
-      <React.Fragment key={str}>
-        {str}
-        <br />
-      </React.Fragment>
-    ));
-
-  const onClickMenu = (event) => {
-    setSelectedMenu(event.target.id);
-  };
-
-  const onClickItem = (event) => {
-    selectedMenu === "qna"
-      ? navigate(`/board/qna/${event.currentTarget.id}`) // qna 상세보기
-      : navigate(`/board/notice/${event.currentTarget.id}`); // 공지사항 상세보기
-  };
-
-  // 콤보박스
+  // 검색 기능
   const [isOpenOptionCmb, setIsOpenOptionCmb] = useState(false);
   const [isOpenCriteriaCmb, setIsOpenCriteriaCmb] = useState(false);
-  const [option, setOption] = useState("title");
-  const [criteria, setCriteria] = useState("week");
+  const [option, setOption] = useState("week");
+  const [criteria, setCriteria] = useState("title");
+  const [keyword, setKeyword] = useState("");
 
   const onClickCmbBox = (event) => {
     if (event.currentTarget.id === "option") {
@@ -103,15 +42,20 @@ export default function () {
     setIsOpenCriteriaCmb(false);
   };
 
-  const onSubmitSearch = async (event) => {
-    event.preventDefault();
+  const onChangeKeyword = (event) => {
+    setKeyword(event.target.value);
+  };
 
+  // 데이터 불러오기
+  const fetchQnaData = async () => {
     await axios
-      .get(`http://15.164.149.157:8082/api/board/notice/search`, {
+      .get(`http://15.164.149.157:8082/api/board/qna`, {
         params: {
+          page: currentPage - 1,
+          size: 7,
           criteria,
           option,
-          keyword: event.target.search.value,
+          keyword,
         },
       })
       .then((res) => {
@@ -126,9 +70,70 @@ export default function () {
             },
           ]);
           setTotalPage(res.data.result.totalPage);
+          setTotalElements(res.data.result.totalElements);
         });
       })
       .catch((err) => console.error(err));
+  };
+
+  const fetchNoticeData = async () => {
+    await axios
+      .get(`http://15.164.149.157:8082/api/board/notice`, {
+        params: {
+          page: currentPage - 1,
+          size: 7,
+          criteria,
+          option,
+          keyword,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setListData([]);
+        res.data.result.content.forEach((el) => {
+          setListData((prev) => [
+            ...prev,
+            {
+              id: el.id,
+              item: [el.num, el.title, el.createdDate, el.viewCount],
+            },
+          ]);
+          setTotalPage(res.data.result.totalPage);
+          setTotalElements(res.data.result.totalElements);
+        });
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    selectedMenu === "qna" && fetchQnaData();
+    selectedMenu === "notice" && fetchNoticeData();
+  }, [selectedMenu, currentPage]);
+
+  // 검색하기
+  const onSubmitSearch = (event) => {
+    event.preventDefault();
+    setCurrentPage(1);
+    if (selectedMenu === "notice") fetchNoticeData();
+    if (selectedMenu === "qna") fetchQnaData();
+  };
+
+  const NewlineText = (text) =>
+    text.split("\n").map((str) => (
+      <React.Fragment key={str}>
+        {str}
+        <br />
+      </React.Fragment>
+    ));
+
+  const onClickMenu = (event) => {
+    setSelectedMenu(event.target.id);
+  };
+
+  const onClickItem = (event) => {
+    selectedMenu === "qna"
+      ? navigate(`/board/qna/${event.currentTarget.id}`) // qna 상세보기
+      : navigate(`/board/notice/${event.currentTarget.id}`); // 공지사항 상세보기
   };
 
   return (
@@ -167,7 +172,7 @@ export default function () {
           {/* 표 상단 */}
           <S.ListTop>
             <S.ListCnt onClick={() => console.log(listData)}>
-              게시글 총 <S.ListCntNum>134</S.ListCntNum>건
+              게시글 총 <S.ListCntNum>{totalElements}</S.ListCntNum>건
             </S.ListCnt>
             <S.ListFilter>
               <S.FilterCategoryBox id="option" onClick={onClickCmbBox}>
@@ -195,6 +200,7 @@ export default function () {
                   name="search"
                   autoComplete="off"
                   placeholder="검색어를 입력해주세요."
+                  onChange={onChangeKeyword}
                 />
                 <S.FilterBtn>
                   <SearchIcon />

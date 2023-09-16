@@ -7,41 +7,48 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import Pagination from "../../../components/pagination/pagination";
+import defaultImg from "../../../assets/img/defaultImg.svg";
 
 export default function NewsMain() {
   const navigate = useNavigate();
 
   const [data, setData] = useState({});
-
-  // 페이지네이션
-  const [currentPageSection, setCurrentPageSection] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
 
-  // 현재 페이지 범위 계산
-  const startItem = (currentPageSection - 1) * itemsPerPage + 1;
-  const endItem = Math.min(currentPageSection * itemsPerPage, data.totalPage);
+  // 검색 기능
+  const [isOpenCriteriaCmb, setIsOpenCriteriaCmb] = useState(false);
+  const [criteria, setCriteria] = useState("title");
+  const [keyword, setKeyword] = useState("");
 
-  const pageButtons = [];
-  for (let i = startItem; i <= endItem; i++) {
-    pageButtons.push(i);
-  }
-
-  const goToPreviousPage = () => {
-    setCurrentPageSection(Math.max(currentPageSection - 5, 1));
+  const onClickCmbBox = (event) => {
+    setIsOpenCriteriaCmb((prev) => !prev);
   };
 
-  const goToNextPage = () => {
-    setCurrentPageSection(
-      Math.min(currentPageSection + 5, Math.ceil(data.totalPage / itemsPerPage))
-    );
+  const onClickCriteria = (event) => {
+    setCriteria(event.target.id);
+    setIsOpenCriteriaCmb(false);
+  };
+
+  const onChangeKeyword = (event) => {
+    setKeyword(event.target.value);
+  };
+
+  const onSubmitSearch = (event) => {
+    event.preventDefault();
+    setCurrentPage(1);
+    fetchData();
   };
 
   // 리스트 불러오기
   const fetchData = async () => {
     await axios
       .get(`http://15.164.149.157/api/presscenter/news`, {
-        params: { page: currentPage, size: 5 },
+        params: {
+          page: currentPage - 1,
+          size: 5,
+          criteria,
+          keyword,
+        },
       })
       .then((res) => {
         console.log(res);
@@ -78,17 +85,42 @@ export default function NewsMain() {
       </S.Banner>
       <S.ListTop>
         <S.ListCnt onClick={() => console.log(data)}>
-          게시글 총 <S.ListCntNum>134</S.ListCntNum>건
+          게시글 총 <S.ListCntNum>{data.totalElements}</S.ListCntNum>건
         </S.ListCnt>
         <S.ListFilter>
-          <S.FilterCategoryBox>
-            <S.FilterCategory>제목</S.FilterCategory>
+          <S.FilterCategoryBox onClick={onClickCmbBox}>
+            <S.FilterCategory>
+              {criteria === "title"
+                ? "제목"
+                : criteria === "content"
+                ? "내용"
+                : "작성자"}
+            </S.FilterCategory>
             <ArrowDropDownIcon />
           </S.FilterCategoryBox>
-          <S.FilterInputBox>
-            <S.FilterInput placeholder="검색어를 입력해주세요." />
-            <SearchIcon />
+          <S.FilterInputBox onSubmit={onSubmitSearch}>
+            <S.FilterInput
+              onChange={onChangeKeyword}
+              placeholder="검색어를 입력해주세요."
+            />
+            <S.FilterBtn>
+              <SearchIcon />
+            </S.FilterBtn>
           </S.FilterInputBox>
+
+          {isOpenCriteriaCmb && (
+            <S.FilterCmbBox>
+              <S.FilterCmbItem id="title" onClick={onClickCriteria}>
+                제목
+              </S.FilterCmbItem>
+              <S.FilterCmbItem id="content" onClick={onClickCriteria}>
+                내용
+              </S.FilterCmbItem>
+              <S.FilterCmbItem id="writer" onClick={onClickCriteria}>
+                작성자
+              </S.FilterCmbItem>
+            </S.FilterCmbBox>
+          )}
         </S.ListFilter>
       </S.ListTop>
       <S.List>
@@ -105,7 +137,9 @@ export default function NewsMain() {
                 <S.ListCreatedAt>{el.createdDate}</S.ListCreatedAt>
               </S.ListInfoWrapper>
             </S.ListTxt>
-            <S.ListImg />
+            <S.ListImgWrapper>
+              <S.ListImg src={el.image || defaultImg} />
+            </S.ListImgWrapper>
           </S.ListItem>
         ))}
       </S.List>
