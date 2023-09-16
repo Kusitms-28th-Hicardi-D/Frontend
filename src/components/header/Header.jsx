@@ -80,10 +80,10 @@ function Header() {
           <SubMenu>
             <Words
               onClick={() => {
-                navigate("/pressCenter/news/sub");
+                navigate("/pressCenter/news");
               }}
             >
-              소식 구독하기
+              하이카디 소식
             </Words>
             <Words
               onClick={() => {
@@ -91,13 +91,6 @@ function Header() {
               }}
             >
               보도자료
-            </Words>
-            <Words
-              onClick={() => {
-                navigate("/pressCenter/news");
-              }}
-            >
-              뉴스레터
             </Words>
           </SubMenu>
         </MenuItem>
