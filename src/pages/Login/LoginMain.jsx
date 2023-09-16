@@ -28,8 +28,12 @@ import {
 } from "./LoginMain.style";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { auth, signInwithGoogle } from "../../firebase/googleAuth";
-
+import { useRecoilState } from "recoil";
+import { LoginState } from "../../recoil/normal/atoms";
 function LoginMain() {
+  // recoil
+  const [loginState, setLoginState] = useRecoilState(LoginState);
+
   // navigation
   const navigation = useNavigate();
   // id, pw
@@ -53,7 +57,23 @@ function LoginMain() {
   const googleLogin = async () => {
     try {
       const response = await signInwithGoogle();
-      console.log(response.data);
+
+      if (response.success) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        });
+
+        navigation("/");
+        setLoginState({ logined: true, user: response.user.email });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -73,7 +93,9 @@ function LoginMain() {
             timer: 3000,
             timerProgressBar: true,
           });
+          setLoginState({ logined: true, user: user.email });
 
+          navigation(-1);
           Toast.fire({
             icon: "success",
             title: "Signed in successfully",

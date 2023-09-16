@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const normalState = atom({
   key: "normalState",
@@ -8,6 +8,14 @@ export const normalState = atom({
       content: "first content",
     },
   ],
+});
+
+export const LoginState = atom({
+  key: "LoginState",
+  default: {
+    logined: false,
+    user: "",
+  },
 });
 
 export const productState = atom({
