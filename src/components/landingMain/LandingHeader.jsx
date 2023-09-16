@@ -14,6 +14,12 @@ function LandingHeader() {
   const navigate = useNavigate();
   return (
     <ViewContainer>
+      <video autoPlay loop className="background-video">
+        <source
+          src="https://marapdftestbucket.s3.ap-northeast-2.amazonaws.com/product_video/a70cf7c582cd4dafae4ad38a5782976a-%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5.mp4"
+          type="video/mp4"
+        />
+      </video>
       <WordBox>
         <Title white>HiCardi</Title>
         <SubTitle white>
