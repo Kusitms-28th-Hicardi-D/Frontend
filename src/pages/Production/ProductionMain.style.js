@@ -75,6 +75,7 @@ export const BtmContainer = styled.div`
   margin: auto;
   width: 90vw;
   max-width: 1200px;
+  margin-bottom: 7rem;
 `;
 
 export const BtmTitle = styled.div`

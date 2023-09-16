@@ -3,6 +3,8 @@ import styled from "styled-components";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
+// 필수 props: currentPage, setCurrentPage, totalPage
+
 export default function Pagination(props) {
   const [currentPageSection, setCurrentPageSection] = useState(1);
   const itemsPerPage = 5;
@@ -17,13 +19,13 @@ export default function Pagination(props) {
   }
 
   const goToPreviousPage = () => {
-    setCurrentPageSection(Math.max(currentPageSection - 5, 1));
+    setCurrentPageSection(Math.max(currentPageSection - 1, 1));
   };
 
   const goToNextPage = () => {
     setCurrentPageSection(
       Math.min(
-        currentPageSection + 5,
+        currentPageSection + 1,
         Math.ceil(props.totalPage / itemsPerPage)
       )
     );
