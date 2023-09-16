@@ -14,6 +14,7 @@ import { Button } from "@mui/material";
 
 function Header() {
   const navigate = useNavigate();
+
   return (
     <HeaderWrapper row>
       {/* <Words size4>HiCardi</Words> */}
@@ -55,7 +56,13 @@ function Header() {
         <MenuItem size2 bold>
           프레스센터
         </MenuItem>
-        <MenuItem size2 bold>
+        <MenuItem
+          size2
+          bold
+          onClick={() => {
+            navigate("/purchase");
+          }}
+        >
           구매하기
         </MenuItem>
         <MenuItem size2 bold>
@@ -85,7 +92,7 @@ function Header() {
               height: "50%",
               borderColor: "#eee",
               whiteSpace: "nowrap",
-              fontSize: "1.3rem",
+              fontSize: "1.1rem",
               borderRadius: "30px",
             }}
             onClick={() => {
@@ -100,7 +107,7 @@ function Header() {
               height: "50%",
               marginLeft: "3%",
               whiteSpace: "nowrap",
-              fontSize: "1.3rem",
+              fontSize: "1.1rem",
               borderColor: "#eee",
               backgroundColor: "#08b9de",
               borderRadius: "30px",

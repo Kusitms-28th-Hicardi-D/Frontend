@@ -9,3 +9,9 @@ export const getSolution = async (name) => {
   const response = await axiosInstance.get(url);
   return response.data;
 };
+
+export const getItems = async () => {
+  const url = `/api/product/list/?category=`;
+  const response = await axiosInstance.get(url);
+  return response.data;
+};

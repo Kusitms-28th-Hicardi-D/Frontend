@@ -27,7 +27,7 @@ import {
   ViewContainer,
 } from "./LoginMain.style";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { auth } from "../../firebase/googleAuth";
+import { auth, signInwithGoogle } from "../../firebase/googleAuth";
 
 function LoginMain() {
   // navigation
@@ -47,6 +47,15 @@ function LoginMain() {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleLogin();
+    }
+  };
+
+  const googleLogin = async () => {
+    try {
+      const response = await signInwithGoogle();
+      console.log(response.data);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -188,7 +197,13 @@ function LoginMain() {
         <LoginUtilList className="login__util">
           <li>아이디 찾기</li>
           <li>비밀번호 찾기</li>
-          <li>구글로 로그인</li>
+          <li
+            onClick={() => {
+              googleLogin();
+            }}
+          >
+            구글로 로그인
+          </li>
         </LoginUtilList>
       </LoginBox>
     </ViewContainer>

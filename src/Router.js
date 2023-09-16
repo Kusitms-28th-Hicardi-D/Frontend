@@ -6,6 +6,7 @@ import React from "react";
 import SignUpPage from "./pages/SignUp/SignUpPage";
 import HolterPage from "./pages/Introduce/Holter/HolterPage";
 import DemoPage from "./pages/Demo/DemoPage";
+import PurchasePage from "./pages/Purchase/PurchasePage";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <DemoPage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/purchase",
+    element: (
+      <>
+        <DefaultView>
+          <PurchasePage />
         </DefaultView>
       </>
     ),

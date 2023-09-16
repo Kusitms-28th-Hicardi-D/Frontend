@@ -38,7 +38,7 @@ export const SubMenu = styled.div`
   padding: 1rem 0.5rem 1rem 0.5rem;
 
   & ${Words} {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 1rem;
   }
 `;
@@ -47,7 +47,7 @@ export const MenuItem = styled(Words)`
   margin-left: 1%;
   flex-wrap: nowrap;
   font-weight: bolder;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 
   @media ${media.tablet} {
     font-size: 1rem;
