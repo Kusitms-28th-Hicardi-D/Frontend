@@ -28,8 +28,12 @@ import {
 } from "./LoginMain.style";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { auth, signInwithGoogle } from "../../firebase/googleAuth";
-
+import { useRecoilState } from "recoil";
+import { LoginState } from "../../recoil/normal/atoms";
 function LoginMain() {
+  // recoil
+  const [loginState, setLoginState] = useRecoilState(LoginState);
+
   // navigation
   const navigation = useNavigate();
   // id, pw
@@ -64,6 +68,7 @@ function LoginMain() {
         });
 
         navigation("/");
+        setLoginState({ logined: true, user: response.user.email });
         Toast.fire({
           icon: "success",
           title: "Signed in successfully",
@@ -88,6 +93,7 @@ function LoginMain() {
             timer: 3000,
             timerProgressBar: true,
           });
+          setLoginState({ logined: true, user: user.email });
 
           navigation(-1);
           Toast.fire({

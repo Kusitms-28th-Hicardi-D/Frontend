@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
 import { media } from "../../styles/media.style";
+import { Button } from "@mui/material";
 
 export const HeaderWrapper = styled(FlexBox)`
   padding: 0.5% 1% 0.5% 1%;
@@ -91,4 +92,20 @@ export const MenuEndItemBox = styled.div`
 export const HolterIntroBox = styled(FlexBox)`
   width: 100%;
   overflow: hidden;
+`;
+
+export const UserBtnBox = styled(FlexBox)`
+  flex-flow: row nowrap;
+  align-items: center;
+`;
+
+export const UserBtn = styled(Button)``;
+
+export const UserBox = styled(FlexBox)``;
+
+export const UserText = styled(Words)`
+  font-size: 0.8rem;
+  border: 1px solid black;
+  padding: 0.7rem;
+  border-radius: 30px;
 `;

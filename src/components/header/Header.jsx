@@ -9,11 +9,21 @@ import {
   MenuWrapper,
   MenuItem,
   SubMenu,
+  UserBox,
+  UserText,
+  UserBtnBox,
+  UserBtn,
 } from "./Header.style";
 import { Button } from "@mui/material";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { LoginState } from "../../recoil/normal/atoms";
+import { auth } from "../../firebase/auth";
+import Swal from "sweetalert2";
 
 function Header() {
   const navigate = useNavigate();
+  const user = useRecoilValue(LoginState);
+  const [loginState, setLoginState] = useRecoilState(LoginState);
 
   return (
     <HeaderWrapper row>
@@ -104,36 +114,73 @@ function Header() {
             <SearchIcon style={{ fontSize: "2.5rem" }} />
           </FlexBox>
 
-          <Button
-            variant="outlined"
-            style={{
-              height: "50%",
-              borderColor: "#eee",
-              whiteSpace: "nowrap",
-              fontSize: "1.1rem",
-              borderRadius: "30px",
-            }}
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            로그인
-          </Button>
-          <Button
-            variant="contained"
-            style={{
-              height: "50%",
-              marginLeft: "3%",
-              whiteSpace: "nowrap",
-              fontSize: "1.1rem",
-              borderColor: "#eee",
-              backgroundColor: "#08b9de",
-              borderRadius: "30px",
-              boxShadow: "none",
-            }}
-          >
-            회원가입
-          </Button>
+          {user.logined ? (
+            <UserBtnBox>
+              <UserBox>
+                <UserText>{user.user}</UserText>
+              </UserBox>
+              <UserBtn
+                style={{
+                  backgroundColor: "#09c1e9",
+                  borderRadius: "30px",
+                  color: "white",
+                  fontWeight: "500",
+                  marginLeft: "1rem",
+                }}
+                onClick={() => {
+                  auth.signOut();
+                  navigate("/");
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    title: "Logout Success",
+                  });
+                  setLoginState({ logined: false, user: "" });
+                }}
+              >
+                Logout
+              </UserBtn>
+            </UserBtnBox>
+          ) : (
+            <>
+              <Button
+                variant="outlined"
+                style={{
+                  height: "50%",
+                  borderColor: "#eee",
+                  whiteSpace: "nowrap",
+                  fontSize: "1.1rem",
+                  borderRadius: "30px",
+                }}
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                로그인
+              </Button>
+              <Button
+                variant="contained"
+                style={{
+                  height: "50%",
+                  marginLeft: "3%",
+                  whiteSpace: "nowrap",
+                  fontSize: "1.1rem",
+                  borderColor: "#eee",
+                  backgroundColor: "#08b9de",
+                  borderRadius: "30px",
+                  boxShadow: "none",
+                }}
+              >
+                회원가입
+              </Button>
+            </>
+          )}
         </div>
         <div className="mobile">
           <MenuIcon fontSize="medium" />
