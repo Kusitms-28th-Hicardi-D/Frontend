@@ -24,9 +24,18 @@ export const IntroFlexBox = styled(FlexBox)`
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-image: url(${require("../../../assets/image/HolterIntro.png")});
-  background-size: cover;
-  background-position: center;
+  overflow: hidden; // 추가: 비디오가 컨테이너를 벗어나지 않도록 함
+  & > video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; // 비디오가 다른 콘텐츠 아래에 나타나게 함
+  }
 `;
 
 export const IntroWordBox = styled(FlexBox)`

@@ -16,13 +16,22 @@ const media = {
 };
 
 export const ViewContainer = styled(FlexBox)`
+  position: relative;
   height: auto;
-  background-image: url(${require("../../assets/image/Landing/LandingMain.png")});
   background-size: cover;
   background-position: center;
-  min-height: 90vh;
-`;
+  min-height: 100vh;
 
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+`;
 export const WordBox = styled(FlexBox)`
   flex-flow: column;
   width: 100%;

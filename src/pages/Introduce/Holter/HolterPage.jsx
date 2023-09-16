@@ -30,6 +30,12 @@ function HolterPage() {
   return (
     <ViewContainer>
       <IntroFlexBox>
+        <video autoPlay loop>
+          <source
+            src="https://marapdftestbucket.s3.ap-northeast-2.amazonaws.com/product_video/dc75c0144e8d41cc9bf7d3f2d4995d2d-%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2.mp4"
+            type="video/mp4"
+          />
+        </video>
         <IntroWordBox column>
           <Title white>하이카디 플러스와 연동이 가능한</Title>
           <Title white>산소포화도 측정장비</Title>
