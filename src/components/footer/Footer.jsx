@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
 import { Container, FooterItem, FooterWord } from "./Footer.style";
+
 const assets = {
   registerNum1: "204-86-40122",
   brand: "동아에스티(주)",
@@ -10,6 +11,7 @@ const assets = {
   registerNum2: "제2022-서울동대문-1374호",
   registerNum3: "제 2003-3050034-00003 호",
 };
+
 
 function Footer() {
   return (

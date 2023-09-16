@@ -53,7 +53,22 @@ function LoginMain() {
   const googleLogin = async () => {
     try {
       const response = await signInwithGoogle();
-      console.log(response.data);
+
+      if (response.success) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        });
+
+        navigation("/");
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -74,6 +89,7 @@ function LoginMain() {
             timerProgressBar: true,
           });
 
+          navigation(-1);
           Toast.fire({
             icon: "success",
             title: "Signed in successfully",
