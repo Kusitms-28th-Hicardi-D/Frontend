@@ -18,6 +18,7 @@ import BoardMain from "./pages/Board/BoardMain";
 import QnaDetail from "./pages/Board/QnaDetail";
 import NoticeDetail from "./pages/Board/NoticeDetail";
 import PurchaseDetailPage from "./pages/Purchase/PurchaseDetailPage";
+import PatientPage from "./pages/Introduce/Patient/PatientPage";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <DemoPage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/patientIntroduce",
+    element: (
+      <>
+        <DefaultView>
+          <PatientPage />
         </DefaultView>
       </>
     ),

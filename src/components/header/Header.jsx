@@ -50,7 +50,13 @@ function Header() {
         <MenuItem size2 bold>
           서비스 소개
           <SubMenu>
-            <Words>환자 모니터링 솔루션</Words>
+            <Words
+              onClick={() => {
+                navigate("/patientIntroduce");
+              }}
+            >
+              환자 모니터링 솔루션
+            </Words>
             <Words
               onClick={() => {
                 navigate("/holterIntroduce");
@@ -69,23 +75,50 @@ function Header() {
         >
           제품 소개
         </MenuItem>
-        <MenuItem
-          size2
-          bold
-          onClick={() => {
-            navigate("/pressCenter/news");
-          }}
-        >
+        <MenuItem size2 bold>
           프레스센터
+          <SubMenu>
+            <Words
+              onClick={() => {
+                navigate("/pressCenter/news/sub");
+              }}
+            >
+              소식 구독하기
+            </Words>
+            <Words
+              onClick={() => {
+                navigate("/pressCenter/report");
+              }}
+            >
+              보도자료
+            </Words>
+            <Words
+              onClick={() => {
+                navigate("/pressCenter/news");
+              }}
+            >
+              뉴스레터
+            </Words>
+          </SubMenu>
         </MenuItem>
-        <MenuItem
-          size2
-          bold
-          onClick={() => {
-            navigate("/purchase");
-          }}
-        >
+        <MenuItem size2 bold>
           구매하기
+          <SubMenu>
+            <Words
+              onClick={() => {
+                navigate("/purchase");
+              }}
+            >
+              제품 구매
+            </Words>
+            <Words
+              onClick={() => {
+                navigate("/holterIntroduce/demo");
+              }}
+            >
+              데모 요청
+            </Words>
+          </SubMenu>
         </MenuItem>
         <MenuItem
           size2

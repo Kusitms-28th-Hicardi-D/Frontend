@@ -49,6 +49,12 @@ export const MenuItem = styled(Words)`
   flex-wrap: nowrap;
   font-weight: bolder;
   font-size: 1.3rem;
+  padding-bottom: 4px;
+
+  &:hover {
+    border-bottom: 2px solid #08b9de;
+    padding-bottom: 4px;
+  }
 
   @media ${media.tablet} {
     font-size: 1rem;
@@ -57,6 +63,9 @@ export const MenuItem = styled(Words)`
   &:hover ${SubMenu} {
     opacity: 1;
     visibility: visible;
+    & ${Words}:hover {
+      border-bottom: 2px solid #08b9de;
+    }
   }
 
   &:hover::after {
