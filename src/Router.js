@@ -3,6 +3,12 @@ import DefaultView from "./components/container/DefaultView";
 import LandingMain from "./pages/Landing/LandingMain";
 import LoginMain from "./pages/Login/LoginMain";
 import React from "react";
+
+import SignUpPage from "./pages/SignUp/SignUpPage";
+import HolterPage from "./pages/Introduce/Holter/HolterPage";
+import DemoPage from "./pages/Demo/DemoPage";
+import PurchasePage from "./pages/Purchase/PurchasePage";
+
 import NewsMain from "./pages/PressCenter/News/NewsMain";
 import ReportMain from "./pages/PressCenter/Report/ReportMain";
 import NewsDetail from "./pages/PressCenter/News/NewsDetail";
@@ -12,15 +18,14 @@ import BoardMain from './pages/Board/BoardMain';
 import QnaDetail from './pages/Board/QnaDetail';
 import NoticeDetail from './pages/Board/NoticeDetail';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
-        <DefaultView>
-          <LandingMain />
-        </DefaultView>
-      </>
+      <DefaultView>
+        <LandingMain />
+      </DefaultView>
     ),
   },
   {
@@ -29,6 +34,46 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <LoginMain />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/signup",
+    element: (
+      <>
+        <DefaultView>
+          <SignUpPage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/holterIntroduce",
+    element: (
+      <>
+        <DefaultView>
+          <HolterPage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/holterIntroduce/demo",
+    element: (
+      <>
+        <DefaultView>
+          <DemoPage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/purchase",
+    element: (
+      <>
+        <DefaultView>
+          <PurchasePage />
         </DefaultView>
       </>
     ),

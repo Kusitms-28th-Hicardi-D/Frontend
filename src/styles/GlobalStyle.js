@@ -1,4 +1,18 @@
 import { createGlobalStyle } from "styled-components";
+import { Words } from "./customComponents";
+import { Word } from "../pages/Introduce/Holter/holterStyle";
+
+const sizes = {
+  mobile: "768px",
+  tablet: "1024px",
+  desktop: "1440px",
+};
+
+const media = {
+  mobile: `(max-width: ${sizes.mobile})`,
+  tablet: `(max-width: ${sizes.tablet})`,
+  desktop: `(max-width: ${sizes.desktop})`,
+};
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -31,6 +45,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 
 table {
 	border-collapse: collapse;
