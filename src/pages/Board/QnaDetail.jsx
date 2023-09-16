@@ -12,7 +12,7 @@ export default function QnaDetail() {
   // 데이터 불러오기
   const fetchQnaData = async () => {
     await axios
-      .get(`http://15.164.149.157/api/board/qna/${qnaId}`)
+      .get(`https://devmincho.site/api/board/qna/${qnaId}`)
       .then((res) => {
         console.log(res);
         setData({ ...res.data.result });

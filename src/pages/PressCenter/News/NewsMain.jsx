@@ -42,7 +42,7 @@ export default function NewsMain() {
   // 리스트 불러오기
   const fetchData = async () => {
     await axios
-      .get(`http://15.164.149.157/api/presscenter/news`, {
+      .get(`https://devmincho.site/api/presscenter/news`, {
         params: {
           page: currentPage - 1,
           size: 5,

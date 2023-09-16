@@ -49,7 +49,7 @@ export default function () {
   // 데이터 불러오기
   const fetchQnaData = async () => {
     await axios
-      .get(`http://15.164.149.157:8082/api/board/qna`, {
+      .get(`https://devmincho.site:8082/api/board/qna`, {
         params: {
           page: currentPage - 1,
           size: 7,
@@ -78,7 +78,7 @@ export default function () {
 
   const fetchNoticeData = async () => {
     await axios
-      .get(`http://15.164.149.157:8082/api/board/notice`, {
+      .get(`https://devmincho.site:8082/api/board/notice`, {
         params: {
           page: currentPage - 1,
           size: 7,

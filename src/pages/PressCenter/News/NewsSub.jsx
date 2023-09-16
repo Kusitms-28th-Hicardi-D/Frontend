@@ -10,7 +10,7 @@ export default function NewsSub() {
 
   const onClickSubmit = async () => {
     await axios
-      .post(`http://15.164.149.157/api/presscenter/news/subscribe`, null, {
+      .post(`https://devmincho.site/api/presscenter/news/subscribe`, null, {
         params: {
           email,
         },

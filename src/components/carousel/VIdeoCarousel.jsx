@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import "./slick.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,6 +20,7 @@ export default function VideoCarousel(props) {
     arrows: true,
     centerMode: true,
     centerPadding: "0px",
+    dotsClass: "dots_custom",
     nextArrow: (
       <NextBtn>
         <ArrowBackIosIcon />
@@ -75,7 +77,14 @@ const Container = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
+  height: 100%;
   width: 100%;
+  position: relative;
+  /* .slick-prev::before,
+  .slick-next::before {
+    opacity: 0;
+    display: none;
+  } */
 `;
 
 // 앞뒤 버튼 커스텀
@@ -84,6 +93,8 @@ const PrevBtn = styled.div`
   height: 50px;
   left: 3%;
   z-index: 3;
+  position: absolute;
+  background-color: blueviolet;
 `;
 
 const NextBtn = styled.div`
@@ -91,4 +102,7 @@ const NextBtn = styled.div`
   height: 30px;
   right: 3%;
   z-index: 3;
+  position: absolute;
+  background-color: blueviolet;
+
 `;

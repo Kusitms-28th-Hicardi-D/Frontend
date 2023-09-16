@@ -57,6 +57,13 @@ export const AttachTitle = styled.div`
   margin-bottom: 1rem;
 `;
 
+export const AttachButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 7rem;
+`
+
 export const AttatchButton = styled.div`
   padding: 0.5rem 1rem;
   background: var(--ui-surface, #fff);

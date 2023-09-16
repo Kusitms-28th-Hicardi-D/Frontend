@@ -26,7 +26,7 @@ export default function ProductionMain() {
 
   const fetchData = async () => {
     await axios
-      .get(`http://15.164.149.157/api/intro/${selectedMenu}`)
+      .get(`https://devmincho.site/api/intro/${selectedMenu}`)
       .then((res) => {
         console.log(res);
         setFileList([...res.data.result.introInfoList]);
