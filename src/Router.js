@@ -9,7 +9,8 @@ import NewsDetail from "./pages/PressCenter/News/NewsDetail";
 import NewsSub from "./pages/PressCenter/News/NewsSub";
 import ProductionMain from './pages/Production/ProductionMain';
 import BoardMain from './pages/Board/BoardMain';
-import BoardDetail from './pages/Board/BoardDetail';
+import QnaDetail from './pages/Board/QnaDetail';
+import NoticeDetail from './pages/Board/NoticeDetail';
 
 const router = createBrowserRouter([
   {
@@ -97,7 +98,17 @@ const router = createBrowserRouter([
     element: (
       <>
         <DefaultView>
-          <BoardDetail />
+          <QnaDetail />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/board/notice/:noticeId",
+    element: (
+      <>
+        <DefaultView>
+          <NoticeDetail />
         </DefaultView>
       </>
     ),

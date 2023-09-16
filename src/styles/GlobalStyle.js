@@ -4,9 +4,9 @@ export const GlobalStyle = createGlobalStyle`
 * {
 	margin: 0;
 	padding: 0;
-    box-sizing: border-box;
-    border-collapse: collapse;
-    text-decoration: none;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  text-decoration: none;
 }
 
 article, aside, details, figcaption, figure, 

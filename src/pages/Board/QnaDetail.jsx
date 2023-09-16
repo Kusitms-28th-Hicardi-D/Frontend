@@ -1,11 +1,11 @@
-import * as S from "./BoardDetail.style";
+import * as S from "./QnaDetail.style";
 import qstIcon from "../../assets/icon/Q.svg";
 import ansIcon from "../../assets/icon/A.svg";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function BoardDetail() {
+export default function QnaDetail() {
   const { qnaId } = useParams();
   const [data, setData] = useState({});
 

@@ -109,27 +109,7 @@ export default function NewsMain() {
           </S.ListItem>
         ))}
       </S.List>
-      {/* <S.Pagination>
-        <KeyboardArrowLeftIcon
-          style={{ cursor: "pointer", visibility: data.totalPage>5 ? "visible" : "hidden" }}
-          onClick={goToPreviousPage}
-        />
-        <S.PageNums>
-          {pageButtons.map((el) => (
-            <S.PageNum
-              onClick={() => setCurrentPage(el)}
-              selected={el === currentPage}
-            >
-              {el}
-            </S.PageNum>
-          ))}
-        </S.PageNums>
-        <KeyboardArrowRightIcon
-          style={{ cursor: "pointer", visibility: data.totalPage>5 ? "visible" : "hidden" }}
-          onClick={goToNextPage}
-        />
-      </S.Pagination> */}
-      
+
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

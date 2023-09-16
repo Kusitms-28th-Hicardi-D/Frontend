@@ -1,6 +1,4 @@
 import * as S from "./BoardMain.style";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import React, { useEffect, useState } from "react";
 import FAQ from "../../components/board/FAQ";
 import { useNavigate } from "react-router-dom";
@@ -16,17 +14,38 @@ export default function () {
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchData = async () => {
+  const fetchQnaData = async () => {
     await axios
-      .get(`http://15.164.149.157:8082/api/board/notice`)
+      .get(`http://15.164.149.157:8082/api/board/qna`)
       .then((res) => {
         console.log(res);
-        res.data.result.content.forEach((el, idx) => {
+        setListData([]);
+        res.data.result.content.forEach((el) => {
           setListData((prev) => [
             ...prev,
             {
               id: el.id,
-              item: [idx, el.title, el.createdDate, el.viewCount],
+              item: [el.num, el.title, el.createdDate, el.viewCount],
+            },
+          ]);
+          setTotalPage(res.data.result.totalPage);
+        });
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const fetchNoticeData = async () => {
+    await axios
+      .get(`http://15.164.149.157:8082/api/board/notice`)
+      .then((res) => {
+        console.log(res);
+        setListData([]);
+        res.data.result.content.forEach((el) => {
+          setListData((prev) => [
+            ...prev,
+            {
+              id: el.id,
+              item: [el.num, el.title, el.createdDate, el.viewCount],
             },
           ]);
           setTotalPage(res.data.result.totalPage);
@@ -36,8 +55,9 @@ export default function () {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    selectedMenu === "qna" && fetchQnaData();
+    selectedMenu === "notice" && fetchNoticeData();
+  }, [selectedMenu]);
 
   const NewlineText = (text) =>
     text.split("\n").map((str) => (
@@ -54,7 +74,61 @@ export default function () {
   const onClickItem = (event) => {
     selectedMenu === "qna"
       ? navigate(`/board/qna/${event.currentTarget.id}`) // qna 상세보기
-      : navigate(`/board/qna/${event.currentTarget.id}`); // 공지사항 상세보기
+      : navigate(`/board/notice/${event.currentTarget.id}`); // 공지사항 상세보기
+  };
+
+  // 콤보박스
+  const [isOpenOptionCmb, setIsOpenOptionCmb] = useState(false);
+  const [isOpenCriteriaCmb, setIsOpenCriteriaCmb] = useState(false);
+  const [option, setOption] = useState("title");
+  const [criteria, setCriteria] = useState("week");
+
+  const onClickCmbBox = (event) => {
+    if (event.currentTarget.id === "option") {
+      setIsOpenOptionCmb((prev) => !prev);
+      setIsOpenCriteriaCmb(false);
+    } else {
+      setIsOpenCriteriaCmb((prev) => !prev);
+      setIsOpenOptionCmb(false);
+    }
+  };
+
+  const onClickOption = (event) => {
+    setOption(event.target.id);
+    setIsOpenOptionCmb(false);
+  };
+
+  const onClickCriteria = (event) => {
+    setCriteria(event.target.id);
+    setIsOpenCriteriaCmb(false);
+  };
+
+  const onSubmitSearch = async (event) => {
+    event.preventDefault();
+
+    await axios
+      .get(`http://15.164.149.157:8082/api/board/notice/search`, {
+        params: {
+          criteria,
+          option,
+          keyword: event.target.search.value,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setListData([]);
+        res.data.result.content.forEach((el) => {
+          setListData((prev) => [
+            ...prev,
+            {
+              id: el.id,
+              item: [el.num, el.title, el.createdDate, el.viewCount],
+            },
+          ]);
+          setTotalPage(res.data.result.totalPage);
+        });
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -96,23 +170,67 @@ export default function () {
               게시글 총 <S.ListCntNum>134</S.ListCntNum>건
             </S.ListCnt>
             <S.ListFilter>
-              <S.DateFilterCategoryBox>
-                <S.FilterCategory>일주일</S.FilterCategory>
+              <S.FilterCategoryBox id="option" onClick={onClickCmbBox}>
+                <S.FilterCategory>
+                  {option === "all"
+                    ? "전체"
+                    : option === "week"
+                    ? "일주일"
+                    : "한달"}
+                </S.FilterCategory>
                 <ArrowDropDownIcon />
-              </S.DateFilterCategoryBox>
-              <S.TitleFilterCategoryBox>
-                <S.FilterCategory>제목</S.FilterCategory>
+              </S.FilterCategoryBox>
+              <S.FilterCategoryBox id="criteria" onClick={onClickCmbBox}>
+                <S.FilterCategory>
+                  {criteria === "title"
+                    ? "제목"
+                    : criteria === "content"
+                    ? "내용"
+                    : "작성자"}
+                </S.FilterCategory>
                 <ArrowDropDownIcon />
-              </S.TitleFilterCategoryBox>
-              <S.FilterInputBox>
-                <S.FilterInput placeholder="검색어를 입력해주세요." />
-                <SearchIcon />
+              </S.FilterCategoryBox>
+              <S.FilterInputBox onSubmit={onSubmitSearch}>
+                <S.FilterInput
+                  name="search"
+                  autoComplete="off"
+                  placeholder="검색어를 입력해주세요."
+                />
+                <S.FilterBtn>
+                  <SearchIcon />
+                </S.FilterBtn>
               </S.FilterInputBox>
+              {isOpenOptionCmb && (
+                <S.FilterCmbBox>
+                  <S.FilterCmbItem id="all" onClick={onClickOption}>
+                    전체
+                  </S.FilterCmbItem>
+                  <S.FilterCmbItem id="week" onClick={onClickOption}>
+                    일주일
+                  </S.FilterCmbItem>
+                  <S.FilterCmbItem id="month" onClick={onClickOption}>
+                    한달
+                  </S.FilterCmbItem>
+                </S.FilterCmbBox>
+              )}
+              {isOpenCriteriaCmb && (
+                <S.FilterCmbBox style={{ left: "100px" }}>
+                  <S.FilterCmbItem id="title" onClick={onClickCriteria}>
+                    제목
+                  </S.FilterCmbItem>
+                  <S.FilterCmbItem id="content" onClick={onClickCriteria}>
+                    내용
+                  </S.FilterCmbItem>
+                  <S.FilterCmbItem id="writer" onClick={onClickCriteria}>
+                    작성자
+                  </S.FilterCmbItem>
+                </S.FilterCmbBox>
+              )}
             </S.ListFilter>
           </S.ListTop>
 
           {/* 표 */}
-          <S.ContentTable>
+          <S.ContentTable selectedMenu={selectedMenu}>
             <thead>
               <tr>
                 <S.ContentHeader style={{ width: "5%" }}>NO</S.ContentHeader>
@@ -137,7 +255,6 @@ export default function () {
               ))}
             </tbody>
           </S.ContentTable>
-          {/*  */}
 
           {selectedMenu === "qna" && (
             <S.BtnContainer>
