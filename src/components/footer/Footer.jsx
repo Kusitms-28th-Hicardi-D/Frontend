@@ -13,7 +13,7 @@ const assets = {
 const Container = styled.div`
   background-color: black;
   min-height: 10vh;
-  margin-top: auto;
+  margin-top: 7rem;
   display: flex;
   flex-flow: row wrap;
   padding-left: 10%;
