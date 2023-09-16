@@ -14,13 +14,13 @@ const media = {
   desktop: `(max-width: ${sizes.desktop})`,
 };
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 * {
 	margin: 0;
 	padding: 0;
-    box-sizing: border-box;
-    border-collapse: collapse;
-    text-decoration: none;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  text-decoration: none;
 }
 
 article, aside, details, figcaption, figure, 
@@ -46,6 +46,7 @@ q:before, q:after {
 	content: none;
 }
 
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -66,5 +67,3 @@ textarea:focus{
 	outline: none;
 }
 `;
-
-export default GlobalStyle;

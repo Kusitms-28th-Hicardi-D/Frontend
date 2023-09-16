@@ -3,8 +3,8 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
 const ViewContainer = styled.div`
-  display: flex;
-  flex-flow: column wrap;
+  /* display: flex; */
+  /* flex-flow: column wrap; */
   min-height: 100vh;
   max-width: 100vw;
 
