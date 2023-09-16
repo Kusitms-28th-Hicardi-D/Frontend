@@ -123,6 +123,7 @@ export const IndexBtnWrapper = styled(FlexBox)`
   column-gap: 1rem;
 `;
 export const IndexBtn = styled(FlexBox)`
+  transition: background-color 1s ease;
   background-color: ${(props) => (props.selected ? "#01b0ef" : "#75757520")};
   flex-flow: column;
   padding: 1rem;

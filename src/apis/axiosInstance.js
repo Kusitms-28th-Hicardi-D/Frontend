@@ -10,8 +10,14 @@ export const getSolution = async (name) => {
   return response.data;
 };
 
-export const getItems = async () => {
-  const url = `/api/product/list/?category=`;
+export const getItems = async (text) => {
+  const url = `/api/product/list/?category=${text}`;
+  const response = await axiosInstance.get(url);
+  return response.data;
+};
+
+export const getItemDetail = async (id) => {
+  const url = `/api/product/list/${id}`;
   const response = await axiosInstance.get(url);
   return response.data;
 };

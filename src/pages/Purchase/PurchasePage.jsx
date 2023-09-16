@@ -20,19 +20,18 @@ import {
   ViewContainer,
   ViewHeader,
 } from "./PurchasePage.style";
-import { useRecoilValue } from "recoil";
-import { productState } from "../../recoil/normal/atoms";
 import { getItems } from "../../apis/axiosInstance";
 import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
+import { useNavigate } from "react-router-dom";
 
 function PurchasePage() {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState(0);
-
   const [items, setItems] = useState();
-  async function fetchItems() {
+  async function fetchItems({ text }) {
     try {
-      const response = await getItems();
+      const response = await getItems(text);
       setItems(response.result.productList);
     } catch (error) {
       console.error(error);
@@ -40,8 +39,14 @@ function PurchasePage() {
   }
 
   useEffect(() => {
-    fetchItems();
-  }, []);
+    let category = "all";
+    if (selected == 0) category = "all";
+    else if (selected == 1) category = "main";
+    else if (selected == 2) category = "assistant";
+    else if (selected == 3) category = "addition";
+    fetchItems({ text: category });
+  }, [selected]);
+
   return (
     <ViewContainer>
       <ViewHeader>
@@ -92,7 +97,11 @@ function PurchasePage() {
         {items &&
           items.map((element, index) => {
             return (
-              <ProductWrapper>
+              <ProductWrapper
+                onClick={() => {
+                  navigate(`/purchase/detail/${element.productId}`);
+                }}
+              >
                 <ImageWrapper>
                   <img
                     src={element.imageUrl}
