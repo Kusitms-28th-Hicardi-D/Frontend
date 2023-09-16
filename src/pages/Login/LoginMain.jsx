@@ -74,6 +74,7 @@ function LoginMain() {
             timerProgressBar: true,
           });
 
+          navigation(-1);
           Toast.fire({
             icon: "success",
             title: "Signed in successfully",

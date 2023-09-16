@@ -50,10 +50,22 @@ function Header() {
             </Words>
           </SubMenu>
         </MenuItem>
-        <MenuItem size2 bold>
+        <MenuItem
+          size2
+          bold
+          onClick={() => {
+            navigate("/production");
+          }}
+        >
           제품 소개
         </MenuItem>
-        <MenuItem size2 bold>
+        <MenuItem
+          size2
+          bold
+          onClick={() => {
+            navigate("/pressCenter/news");
+          }}
+        >
           프레스센터
         </MenuItem>
         <MenuItem
@@ -65,7 +77,13 @@ function Header() {
         >
           구매하기
         </MenuItem>
-        <MenuItem size2 bold>
+        <MenuItem
+          size2
+          bold
+          onClick={() => {
+            navigate("/board");
+          }}
+        >
           게시판
         </MenuItem>
       </MenuWrapper>

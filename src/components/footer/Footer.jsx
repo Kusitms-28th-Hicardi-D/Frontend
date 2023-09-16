@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
 import { Container, FooterItem, FooterWord } from "./Footer.style";
+
 const assets = {
   registerNum1: "204-86-40122",
   brand: "동아에스티(주)",
@@ -11,31 +12,29 @@ const assets = {
   registerNum3: "제 2003-3050034-00003 호",
 };
 
+// const Container = styled.div`
+//   background-color: black;
+//   min-height: 10vh;
+//   margin-top: 7rem;
+//   display: flex;
+//   flex-flow: row wrap;
+//   padding-left: 10%;
+//   padding-right: 10%;
+//   padding-top: 5%;
+//   padding-bottom: 5%;
+// `;
 
-const Container = styled.div`
-  background-color: black;
-  min-height: 10vh;
-  margin-top: 7rem;
-  display: flex;
-  flex-flow: row wrap;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-`;
+// const FooterItem = styled(FlexBox)`
+//   flex: 1 1 50%;
+//   justify-content: center;
+// `;
 
-const FooterItem = styled(FlexBox)`
-  flex: 1 1 50%;
-  justify-content: center;
-`;
-
-const FooterWord = styled(Words)`
-  margin: 0;
-  margin-bottom: 1.5%;
-  padding: 0;
-  border-bottom: ${(props) => (props.underline ? "1px solid #1aabde" : "0")};
-`;
-
+// const FooterWord = styled(Words)`
+//   margin: 0;
+//   margin-bottom: 1.5%;
+//   padding: 0;
+//   border-bottom: ${(props) => (props.underline ? "1px solid #1aabde" : "0")};
+// `;
 
 function Footer() {
   return (
