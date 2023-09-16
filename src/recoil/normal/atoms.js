@@ -10,6 +10,14 @@ export const normalState = atom({
   ],
 });
 
+export const LoginState = atom({
+  key: "LoginState",
+  default: {
+    logined: false,
+    user: "",
+  },
+});
+
 export const productState = atom({
   key: "productState",
   default: [

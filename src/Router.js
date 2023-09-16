@@ -13,11 +13,11 @@ import NewsMain from "./pages/PressCenter/News/NewsMain";
 import ReportMain from "./pages/PressCenter/Report/ReportMain";
 import NewsDetail from "./pages/PressCenter/News/NewsDetail";
 import NewsSub from "./pages/PressCenter/News/NewsSub";
-import ProductionMain from './pages/Production/ProductionMain';
-import BoardMain from './pages/Board/BoardMain';
-import QnaDetail from './pages/Board/QnaDetail';
-import NoticeDetail from './pages/Board/NoticeDetail';
-
+import ProductionMain from "./pages/Production/ProductionMain";
+import BoardMain from "./pages/Board/BoardMain";
+import QnaDetail from "./pages/Board/QnaDetail";
+import NoticeDetail from "./pages/Board/NoticeDetail";
+import PurchaseDetailPage from "./pages/Purchase/PurchaseDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +74,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <PurchasePage />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/purchase/detail/:id",
+    element: (
+      <>
+        <DefaultView>
+          <PurchaseDetailPage />
         </DefaultView>
       </>
     ),
