@@ -7,8 +7,6 @@ import {
   SubTitle,
   Title,
 } from "./HolterArticle.style";
-import { Button } from "@mui/material";
-import { axiosInstance } from "../../apis/axiosInstance";
 
 function HolterArticle({ info }) {
   // console.log(info.fileKey);

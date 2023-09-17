@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { productState } from "../../recoil/normal/atoms";
 import PatientArticle from "./PatientArticle";
 import { getSolution } from "../../apis/axiosInstance";
+import { media } from "../../styles/media.style";
 
 function PatientArticles() {
   const [holterInfo, setHolterInfo] = useState([]);
@@ -19,9 +20,7 @@ function PatientArticles() {
 
   return (
     <EContainer>
-      <Words size5 style={{ fontWeight: "800", letterSpacing: "0.1rem" }}>
-        환자 모니터링 솔루션의 임상적 유효성을 증명했습니다
-      </Words>
+      <Title>환자 모니터링 솔루션의 임상적 유효성을 증명했습니다</Title>
       <ArticleContainer>
         {holterInfo &&
           holterInfo.map((element) => {
@@ -49,6 +48,17 @@ const ArticleContainer = styled(FlexBox)`
   align-content: flex-start;
 `;
 
-const Word = styled(Words)`
+const Title = styled(Words)`
   font-weight: bolder;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  font-size: 3rem;
+
+  @media ${media.tablet} {
+    font-size: 1.7rem;
+  }
+
+  @media ${media.mobile} {
+    font-size: 1.3rem;
+  }
 `;

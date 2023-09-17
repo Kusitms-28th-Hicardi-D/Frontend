@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
+import { media } from "../../styles/media.style";
 
 export const ArticleCard = styled(FlexBox)`
   display: flex;
@@ -18,9 +19,16 @@ export const ArticleCard = styled(FlexBox)`
   border-radius: 8px;
   background: var(--ui-surface, #fff);
 
-  /* card-sd */
   box-shadow: 0px 0px 5px 0px rgba(0, 51, 150, 0.25);
   padding-bottom: 1rem;
+
+  @media ${media.tablet} {
+    flex-basis: 40%;
+  }
+
+  @media ${media.mobile} {
+    flex-basis: 80%;
+  }
 `;
 
 export const ImageBox = styled(FlexBox)`
