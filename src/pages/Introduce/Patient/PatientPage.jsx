@@ -5,6 +5,8 @@ import {
   ViewContainer,
   YesBtn,
 } from "./patientStyle";
+import PatientArticles from "../../../components/patient/PatientArticles";
+import PatientReview from "../../../components/patient/PatientReview";
 
 function PatientPage() {
   const navigate = useNavigate();
@@ -16,6 +18,8 @@ function PatientPage() {
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </ImageContainer>
+      <PatientArticles />
+      <PatientReview />
       <ButtonContainer>
         <YesBtn
           variant="outlined"
