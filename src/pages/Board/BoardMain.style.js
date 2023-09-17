@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { media } from "../../styles/media.style";
 export const ViewContainer = styled.div`
   margin: auto;
   width: 90vw;
@@ -12,6 +12,14 @@ export const Title = styled.div`
   font-size: 3rem;
   font-weight: 700;
   line-height: 3.6rem;
+
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
 `;
 
 export const MenuBar = styled.div`
@@ -37,6 +45,13 @@ export const ListTop = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const ListCnt = styled.div`
@@ -89,6 +104,12 @@ export const FilterInputBox = styled.form`
   border-radius: 0px 5px 5px 0px;
   background: var(--ui-surface, #fff);
   padding: 0 0.5rem;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    width: auto;
+  }
 `;
 
 export const FilterInput = styled.input`
@@ -100,13 +121,18 @@ export const FilterInput = styled.input`
   height: 70%;
   border: none;
   outline: none;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+  }
 `;
 
 export const FilterBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const FilterCmbBox = styled.div`
   position: absolute;
