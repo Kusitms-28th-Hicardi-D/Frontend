@@ -152,6 +152,9 @@ function Header() {
                   color: "white",
                   fontWeight: "500",
                   marginLeft: "1rem",
+                  wordBreak: "normal",
+                  fontSize: "0.8rem",
+                  border: "1px solid black",
                 }}
                 onClick={() => {
                   auth.signOut();
@@ -165,12 +168,12 @@ function Header() {
                   });
                   Toast.fire({
                     icon: "success",
-                    title: "Logout Success",
+                    title: "로그아웃되었습니다",
                   });
                   setLoginState({ logined: false, user: "" });
                 }}
               >
-                Logout
+                로그아웃
               </UserBtn>
             </UserBtnBox>
           ) : (
