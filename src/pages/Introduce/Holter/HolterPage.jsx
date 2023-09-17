@@ -49,7 +49,12 @@ function HolterPage() {
               데모요청하기
               <RightIcon />
             </CustomBtn>
-            <CustomBtn transparent>
+            <CustomBtn
+              transparent
+              onClick={() => {
+                navigate("/production");
+              }}
+            >
               제품 보러가기
               <RightIcon />
             </CustomBtn>

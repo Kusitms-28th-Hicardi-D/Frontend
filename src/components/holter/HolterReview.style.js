@@ -43,7 +43,9 @@ export const Title = styled(Words)`
 `;
 
 export const Description = styled(Words)`
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.3rem;
   margin-top: 1rem;
   width: 95%;
   margin-bottom: 1rem;

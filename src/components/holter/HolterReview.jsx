@@ -39,7 +39,7 @@ function HolterReview() {
   const fetchData = async () => {
     try {
       const response = await getSolution("holter");
-      setData(response);
+      setData(response.result.reviews);
       return true;
     } catch (error) {
       console.error(error);
@@ -62,26 +62,28 @@ function HolterReview() {
     <ViewContainer>
       <HeaderTitle>데모체험단 REVIEW</HeaderTitle>
       <SliderWrapper>
-        <Slider {...settings}>
-          <ReviewBox>
-            <Box>
-              <Title>{review[0].writer}</Title>
-              <Description>{review[0].content}</Description>
-            </Box>
-          </ReviewBox>
-          <ReviewBox>
-            <Box>
-              <Title>{review[1].writer}</Title>
-              <Description>{review[1].content}</Description>
-            </Box>
-          </ReviewBox>
-          <ReviewBox>
-            <Box>
-              <Title>{review[2].writer}</Title>
-              <Description>{review[2].content}</Description>
-            </Box>
-          </ReviewBox>
-        </Slider>
+        {data && (
+          <Slider {...settings}>
+            <ReviewBox>
+              <Box>
+                <Title>{data[0].writer}</Title>
+                <Description>{data[0].content}</Description>
+              </Box>
+            </ReviewBox>
+            <ReviewBox>
+              <Box>
+                <Title>{data[1].writer}</Title>
+                <Description>{data[1].content}</Description>
+              </Box>
+            </ReviewBox>
+            <ReviewBox>
+              <Box>
+                <Title>{data[2].writer}</Title>
+                <Description>{data[2].content}</Description>
+              </Box>
+            </ReviewBox>
+          </Slider>
+        )}
       </SliderWrapper>
     </ViewContainer>
   );

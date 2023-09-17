@@ -25,7 +25,7 @@ function PatientPage() {
             fontSize: "2rem",
           }}
           onClick={() => {
-            navigate("/purchase");
+            navigate("/purchase/detail/1");
           }}
         >
           환자모니터링 솔루션 구매하기
