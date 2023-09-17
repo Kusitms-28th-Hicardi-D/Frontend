@@ -20,6 +20,7 @@ import {
   MenuBarItem,
   MenuBarTxt,
   MenuBarSubItemWrapper,
+  LoginBtn,
 } from "./Header.style";
 import { Button, TextField } from "@mui/material";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -42,7 +43,6 @@ function Header() {
   const [isOpenPressCenter, setIsOpenPressCenter] = useState(false);
 
   const [inputSearch, setInputSearch] = useState();
-
 
   const toggleSearchBar = () => {
     setShowSearchBar((prev) => !prev);
@@ -73,7 +73,6 @@ function Header() {
       setIsOpenPressCenter((prev) => !prev);
     }
   };
-
 
   const searchs = async (keyword) => {
     console.log(keyword);
@@ -233,13 +232,13 @@ function Header() {
                 justifyContent: "center",
                 border: "1px solid #eee",
                 borderRadius: "50%",
-                paddingLeft: "3px",
-                paddingRight: "3px",
+                paddingLeft: "4px",
+                paddingRight: "4px",
                 marginRight: "3%",
               }}
             >
               <SearchIcon
-                style={{ fontSize: "2.5rem" }}
+                style={{ width: "2rem", height: "2rem", cursor: "pointer" }}
                 onClick={toggleSearchBar}
               />
             </FlexBox>
@@ -282,36 +281,24 @@ function Header() {
               </UserBtnBox>
             ) : (
               <>
-                <Button
+                <LoginBtn
                   variant="outlined"
-                  style={{
-                    height: "50%",
-                    borderColor: "#eee",
-                    whiteSpace: "nowrap",
-                    fontSize: "1.1rem",
-                    borderRadius: "30px",
+                  style={{ color: "#19afdd", backgroundColor: "#fff", border: "1.5px solid #19afdd"
                   }}
                   onClick={() => {
                     navigate("/login");
                   }}
                 >
                   로그인
-                </Button>
-                <Button
+                </LoginBtn>
+                <LoginBtn
                   variant="contained"
                   style={{
-                    height: "50%",
                     marginLeft: "3%",
-                    whiteSpace: "nowrap",
-                    fontSize: "1.1rem",
-                    borderColor: "#eee",
-                    backgroundColor: "#08b9de",
-                    borderRadius: "30px",
-                    boxShadow: "none",
                   }}
                 >
                   회원가입
-                </Button>
+                </LoginBtn>
               </>
             )}
           </div>
@@ -320,7 +307,6 @@ function Header() {
           </MenuBtn>
         </MenuEndItemBox>
 
-        
         {isOpenMenuBar && (
           <MenuBar>
             <MenuBarItem id="service" onClick={toggleSubMenuItem}>

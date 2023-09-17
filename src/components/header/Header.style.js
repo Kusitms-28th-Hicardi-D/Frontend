@@ -113,6 +113,25 @@ export const UserBtn = styled(Button)``;
 
 export const UserBox = styled(FlexBox)``;
 
+export const LoginBtn = styled(FlexBox)`
+  width: 110px;
+  /* height: 50%; */
+  padding: 0.8rem 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--ui-primary, #fff);
+  font-size: 1rem;
+  font-weight: 700;
+
+  border-radius: 8px;
+  background: var(--ui-primary, #19afdd);
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+
 export const UserText = styled(Words)`
   font-size: 0.8rem;
   border: 1px solid black;
