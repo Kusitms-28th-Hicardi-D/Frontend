@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { getSolution } from "../../apis/axiosInstance";
+import { media } from "../../styles/media.style";
 
 function PatientReview() {
   const [data, setData] = useState();
@@ -89,4 +90,12 @@ const Box = styled.div`
   padding-left: 2rem;
   background-color: #dfdfdf90;
   justify-content: center;
+
+  @media ${media.tablet} {
+    width: 100%;
+  }
+
+  @media ${media.mobile} {
+    height: fit-content;
+  }
 `;

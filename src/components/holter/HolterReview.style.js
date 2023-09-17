@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
 import Slider from "react-slick";
-
+import { media } from "../../styles/media.style";
 export const ViewContainer = styled(FlexBox)`
   background-image: url(${require("../../assets/image/Landing/landingBackground.png")});
   background-size: cover;
@@ -9,6 +9,7 @@ export const ViewContainer = styled(FlexBox)`
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const SliderWrapper = styled.div`
@@ -30,6 +31,13 @@ export const HeaderTitle = styled(Words)`
   letter-spacing: 0.1rem;
   font-weight: 800;
   color: #c8ecf7;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const Title = styled(Words)`
@@ -40,6 +48,14 @@ export const Title = styled(Words)`
   border-bottom: 2px solid var(--gray-gray-70, #dfdfdf);
   width: 95%;
   padding-bottom: 1rem;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
 `;
 
 export const Description = styled(Words)`
@@ -49,4 +65,10 @@ export const Description = styled(Words)`
   margin-top: 1rem;
   width: 95%;
   margin-bottom: 1rem;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    font-size: 0.7rem;
+  }
 `;

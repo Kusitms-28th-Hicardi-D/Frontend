@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import { media } from "../../styles/media.style";
 
 function HolterReview() {
   const [data, setData] = useState();
@@ -92,4 +93,12 @@ const Box = styled.div`
   padding-left: 2rem;
   background-color: #dfdfdf90;
   justify-content: center;
+
+  @media ${media.tablet} {
+    width: 100%;
+  }
+
+  @media ${media.mobile} {
+    height: fit-content;
+  }
 `;
