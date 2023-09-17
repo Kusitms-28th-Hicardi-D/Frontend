@@ -23,12 +23,13 @@ import {
 import { getItems } from "../../apis/axiosInstance";
 import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function PurchasePage() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(0);
   const [items, setItems] = useState();
+  // const { state } = useLocation();
   async function fetchItems({ text }) {
     try {
       const response = await getItems(text);
@@ -38,7 +39,18 @@ function PurchasePage() {
     }
   }
 
+  // useEffect(() => {
+  //   if (state.selectedMenu == "hicardi") setSelected(1);
+  //   else if (state.selectedMenu == "nonin") setSelected(2);
+  //   else if (state.selectedMenu == "addService") setSelected(3);
+  //   // return setSelected(0);
+  // }, [])
+
   useEffect(() => {
+    // if (state.selectedMenu == "hicardi") setSelected(1);
+    // else if (state.selectedMenu == "nonin") setSelected(2);
+    // else if (state.selectedMenu == "addService") setSelected(3);
+
     let category = "all";
     if (selected == 0) category = "all";
     else if (selected == 1) category = "main";
@@ -50,7 +62,7 @@ function PurchasePage() {
   return (
     <ViewContainer>
       <ViewHeader>
-        <HeaderTextBox>
+        <HeaderTextBox onClick={() => console.log(state, selected)}>
           <HeaderTitle>HiCardi +</HeaderTitle>
           <HeaderSubTitle>스마트한 병원을 위한 솔루션</HeaderSubTitle>
           <HeaderSubTitle>Hicardi+ 제품을 만나보세요.</HeaderSubTitle>

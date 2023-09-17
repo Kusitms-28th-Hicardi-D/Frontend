@@ -49,7 +49,7 @@ export default function () {
   // 데이터 불러오기
   const fetchQnaData = async () => {
     await axios
-      .get(`https://devmincho.site:8082/api/board/qna`, {
+      .get(`https://devmincho.site/api/board/qna`, {
         params: {
           page: currentPage - 1,
           size: 7,
@@ -78,7 +78,7 @@ export default function () {
 
   const fetchNoticeData = async () => {
     await axios
-      .get(`https://devmincho.site:8082/api/board/notice`, {
+      .get(`https://devmincho.site/api/board/notice`, {
         params: {
           page: currentPage - 1,
           size: 7,
@@ -128,6 +128,10 @@ export default function () {
 
   const onClickMenu = (event) => {
     setSelectedMenu(event.target.id);
+    setCurrentPage(1);
+    setOption("week");
+    setCriteria("title");
+    setKeyword("");
   };
 
   const onClickItem = (event) => {
@@ -199,6 +203,7 @@ export default function () {
                 <S.FilterInput
                   name="search"
                   autoComplete="off"
+                  value={keyword}
                   placeholder="검색어를 입력해주세요."
                   onChange={onChangeKeyword}
                 />

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import "./slick.css";
@@ -10,7 +10,10 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 export default function VideoCarousel(props) {
-  const carouselRef = useRef(null);
+  //   const carouselRef = useRef(null);
+  const sliderRef = useRef();
+  //   const [slideRefs, setSlideRefs] = useState([]);
+  const videoRef = useRef([]);
 
   const settings = {
     dots: true,
@@ -31,17 +34,37 @@ export default function VideoCarousel(props) {
         <KeyboardArrowLeftIcon />
       </PrevBtn>
     ),
+    // afterChange: (currentSlide) => {
+    //   // 슬라이드가 변경될 때 호출되는 이벤트 핸들러
+    //   const videoElements = Array.from(
+    //     carouselRef.current.innerSlider.list
+    //   ).map((slide) => slide.querySelector("video"));
+    //   console.log(
+    //     currentSlide,
+    //     carouselRef.current.innerSlider
+    //   );
+
+    //   //   // 비디오 요소를 일시정지
+    //   //   videoElements.forEach((videoElement, index) => {
+    //   //     if (videoElement) {
+    //   //       videoElement.pause();
+    //   //     }
+    //   //   });
+
+    //   //   // 현재 슬라이드의 비디오를 재생
+    //   //   const currentVideo = videoElements[currentSlide];
+    //   //   if (currentVideo) {
+    //   //     currentVideo.play();
+    //   //   }
+    // },
     afterChange: (currentSlide) => {
       // 슬라이드가 변경될 때 호출되는 이벤트 핸들러
-      const videoElements = Array.from(
-        carouselRef.current.innerSlider.list
-      ).map((slide) => slide.querySelector("video"));
-
-      // 비디오 요소를 일시정지
-      videoElements.forEach((videoElement, index) => {
-        if (videoElement) {
-          videoElement.pause();
-        }
+      const videoElements = videoRef.current;
+      console.log(sliderRef.current);
+      console.log(videoElements, currentSlide);
+      // 모든 비디오 요소를 정지
+      videoElements.forEach((video) => {
+        video.pause();
       });
 
       // 현재 슬라이드의 비디오를 재생
@@ -54,9 +77,9 @@ export default function VideoCarousel(props) {
 
   return (
     <Container>
-      <StyledSlider {...settings} ref={carouselRef}>
-        {props.urlList.map((el) => (
-          <video key={el} autoPlay controls>
+      <StyledSlider {...settings} ref={sliderRef}>
+        {props.urlList.map((el, idx) => (
+          <video ref={(ref) => (videoRef.current[idx] = ref)} key={el} controls>
             <source src={el} />
           </video>
         ))}
@@ -104,5 +127,4 @@ const NextBtn = styled.div`
   z-index: 3;
   position: absolute;
   background-color: blueviolet;
-
 `;

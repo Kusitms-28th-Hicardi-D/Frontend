@@ -25,10 +25,13 @@ export default function NewsDetail() {
   }, []);
 
   // 외부 링크를 새 탭으로 열기
-  const onClickItem = (event) => {
+  const onClickItem = async (event) => {
     const idx = event.target.id;
     // await axios
-    //   .get(`http://15.164.149.157/api/presscenter/news/file`, {
+    //   .get(`https://devmincho.site/api/presscenter/news/file`, {
+    //     headers: {
+    //       "Content-Type": "application/octet-stream",
+    //     },
     //     params: {
     //       key: data.files[idx]?.url,
     //       downloadFileName: data.files[idx]?.name,
@@ -41,7 +44,7 @@ export default function NewsDetail() {
     //     console.error(err);
     //   });
     window.open(
-      `https://devmincho.site/api/presscenter/news/file?key=${data.files[idx]?.url}&downloadFileName=${data.files[idx]?.name}`,
+      `https://devmincho.site/api/presscenter/news/file?key=${data.files[idx]?.url}&downloadFileName=${data.files[idx]?.name}.pdf`,
       "_blank"
     );
   };
@@ -55,7 +58,9 @@ export default function NewsDetail() {
         <S.PostInfo>{data.createdDate}</S.PostInfo>
       </S.PostInfoWrapper>
       <S.Contents>{data.content}</S.Contents>
-      <S.AttachTitle>첨부파일 {data.files?.length}개</S.AttachTitle>
+      <S.AttachTitle>
+        첨부파일 {data.files?.length === 0 ? "0" : data.files?.length}개
+      </S.AttachTitle>
       <S.AttachButtonWrapper>
         {data.files?.map((el, idx) => (
           <S.AttatchButton id={idx} onClick={onClickItem}>

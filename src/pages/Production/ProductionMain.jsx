@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import * as S from "./ProductionMain.style";
 import React from "react";
 import HicardiInfo from "../../components/production/HicardiInfo";
 import axios from "axios";
 import VideoCarousel from "../../components/carousel/VIdeoCarousel";
+import { useNavigate } from "react-router-dom";
+import Carousel from "../../components/carousel/Carousel";
 
 export default function ProductionMain() {
   const [selectedMenu, setSelectedMenu] = useState("hicardi");
+  const navigate = useNavigate();
 
   const title = {
     hicardi: `편리하게 심전도 측정, 전송 및 분석\n더 나은 삶을 위한 스마트한 솔루션 HiCardi+`,
@@ -17,6 +20,7 @@ export default function ProductionMain() {
 
   const [fileList, setFileList] = useState([]);
   const [videoList, setVidioList] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const btmTitle = {
     hicardi: "HiCardi",
@@ -42,6 +46,7 @@ export default function ProductionMain() {
   const onClickMenu = (event) => {
     const value = event.target.id;
     setSelectedMenu(value);
+    setCurrentIndex(0);
   };
 
   const NewlineText = (text) =>
@@ -88,6 +93,7 @@ export default function ProductionMain() {
           <S.BuyBtn
             onClick={() => {
               console.log(videoList);
+              navigate("/purchase", { state: { selectedMenu } });
             }}
           >
             <S.BtnTxt>구매하기</S.BtnTxt>
@@ -96,7 +102,11 @@ export default function ProductionMain() {
         </S.TxtContainer>
 
         {(selectedMenu === "hicardi" || selectedMenu === "nonin") && (
-          <VideoCarousel urlList={videoList.map((el) => el.videoUrl)} />
+          <Carousel
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+            urlList={videoList.map((el) => el.videoUrl)}
+          />
         )}
       </S.TopContainer>
       {selectedMenu === "hicardi" && <HicardiInfo />}

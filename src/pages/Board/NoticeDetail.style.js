@@ -40,12 +40,14 @@ export const Contents = styled.div`
   border-top: 2px solid var(--gray-gray-70, #dfdfdf);
   border-bottom: 2px solid var(--gray-gray-70, #dfdfdf);
   background: var(--ui-surface-01, #f6f6f6);
+  white-space: pre-line;
 
   min-height: 300px;
   color: var(--text-text-01, #242424);
   font-family: Noto Sans CJK KR;
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5rem;
 `;
 
 export const AttachTitle = styled.div`

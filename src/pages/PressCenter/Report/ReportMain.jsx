@@ -19,7 +19,7 @@ export default function ReportMain() {
   const [criteria, setCriteria] = useState("title");
   const [keyword, setKeyword] = useState("");
 
-  const onClickCmbBox = (event) => {
+  const onClickCmbBox = () => {
     setIsOpenCriteriaCmb((prev) => !prev);
   };
 
@@ -43,7 +43,7 @@ export default function ReportMain() {
     await axios
       .get(`https://devmincho.site/api/presscenter/report`, {
         params: {
-          page: currentPage-1,
+          page: currentPage - 1,
           size: 5,
           criteria,
           keyword,
@@ -127,7 +127,9 @@ export default function ReportMain() {
         {data.content?.map((el) => (
           <S.ListItem key={el.id} id={el.link} onClick={onClickItem}>
             <S.ListTxt>
-              <S.ListTitle>{el.title}</S.ListTitle>
+              <S.ListTitle dangerouslySetInnerHTML={{ __html: el.title }}>
+                {/* {el.title} */}
+              </S.ListTitle>
               <S.ListInfoWrapper>
                 <S.ListCreatedAt>{el.pubDate}</S.ListCreatedAt>
               </S.ListInfoWrapper>
