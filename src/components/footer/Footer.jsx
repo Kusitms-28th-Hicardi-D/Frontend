@@ -12,11 +12,10 @@ const assets = {
   registerNum3: "제 2003-3050034-00003 호",
 };
 
-
 function Footer() {
   return (
     <Container>
-      <FooterItem column>
+      <FooterItem column isFirstItem>
         <FlexBox style={{ width: "20%", marginBottom: "5%" }}>
           <img
             src="https://ecimg.cafe24img.com/pg189b34772306057/hicardi/web/images/wlogo%403x.png"
@@ -49,6 +48,7 @@ function Footer() {
       </FooterItem>
       <FooterItem
         column
+        isSecondItem
         style={{
           alignItems: "flex-end",
           justifyContent: "space-evenly",
