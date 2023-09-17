@@ -86,7 +86,6 @@ function Header() {
                 홀터 솔루션
               </Words>
             </SubMenu>
-            <ArrowDropDownIcon />
           </MenuItem>
 
           <MenuItem
@@ -116,7 +115,6 @@ function Header() {
                 보도자료
               </Words>
             </SubMenu>
-            <ArrowDropDownIcon />
           </MenuItem>
           <MenuItem size2 bold>
             구매하기
@@ -136,7 +134,6 @@ function Header() {
                 데모 요청
               </Words>
             </SubMenu>
-            <ArrowDropDownIcon />
           </MenuItem>
           <MenuItem
             size2
@@ -144,6 +141,7 @@ function Header() {
             onClick={() => {
               navigate("/board");
             }}
+            style={{ paddingBottom: "-0px" }}
           >
             게시판
           </MenuItem>
