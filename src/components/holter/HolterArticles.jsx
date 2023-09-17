@@ -11,7 +11,7 @@ function HolterArticles() {
   async function fetchSolution() {
     // 이름 변경
     const response = await getSolution("holter");
-    setHolterInfo(response.result.reviews);
+    setHolterInfo(response.result.tests);
   }
 
   useEffect(() => {
@@ -20,7 +20,9 @@ function HolterArticles() {
 
   return (
     <EContainer>
-      <Words size5>환자 모니터링 솔루션의 임상적 유효성을 증명했습니다</Words>
+      <Words size5 style={{ fontWeight: "800", letterSpacing: "0.1rem" }}>
+        환자 모니터링 솔루션의 임상적 유효성을 증명했습니다
+      </Words>
       <ArticleContainer>
         {holterInfo &&
           holterInfo.map((element) => {

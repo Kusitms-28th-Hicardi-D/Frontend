@@ -1,8 +1,6 @@
 import React from "react";
 import {
   ArticleCard,
-  ArticleContent,
-  ArticleMedia,
   ArticleViewBtn,
   CustomCard,
   ImageBox,
@@ -17,13 +15,13 @@ function HolterArticle({ info }) {
       <ImageBox>
         <img
           alt="product image"
-          src={require("../../assets/image/HolterIntro.png")}
+          src={info.image}
           style={{ width: "100%", height: "100%" }}
         />
       </ImageBox>
       <CustomCard>
-        <Title>{info.writer}</Title>
-        <SubTitle>{info.content}</SubTitle>
+        <Title>{info.category}</Title>
+        <SubTitle>{info.title}</SubTitle>
       </CustomCard>
       <ArticleViewBtn
         variant="contained"

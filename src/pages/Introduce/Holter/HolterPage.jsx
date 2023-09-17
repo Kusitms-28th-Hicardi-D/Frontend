@@ -15,6 +15,7 @@ import {
   CustomBtn,
   BtnWrapper,
 } from "../../../components/landingMain/landingHeaderStyle";
+import HolterReview from "../../../components/holter/HolterReview";
 
 const holterImageLink = {
   holter360: require("../../../assets/image/Holter/Holter360.jpg"),
@@ -30,7 +31,7 @@ function HolterPage() {
   return (
     <ViewContainer>
       <IntroFlexBox>
-        <video autoPlay loop>
+        <video autoPlay muted loop>
           <source
             src="https://marapdftestbucket.s3.ap-northeast-2.amazonaws.com/product_video/dc75c0144e8d41cc9bf7d3f2d4995d2d-%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2.mp4"
             type="video/mp4"
@@ -48,7 +49,12 @@ function HolterPage() {
               데모요청하기
               <RightIcon />
             </CustomBtn>
-            <CustomBtn transparent>
+            <CustomBtn
+              transparent
+              onClick={() => {
+                navigate("/production");
+              }}
+            >
               제품 보러가기
               <RightIcon />
             </CustomBtn>
@@ -66,6 +72,7 @@ function HolterPage() {
         />
       </HolterIntroBox>
       <HolterArticles />
+      <HolterReview />
     </ViewContainer>
   );
 }

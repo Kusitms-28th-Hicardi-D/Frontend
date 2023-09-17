@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
 import { media } from "../../styles/media.style";
 import { Button } from "@mui/material";
@@ -118,4 +118,42 @@ export const UserText = styled(Words)`
   border: 1px solid black;
   padding: 0.7rem;
   border-radius: 30px;
+`;
+
+const slideDown = keyframes`
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+const slideUp = keyframes`
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+`;
+
+export const SearchBar = styled.div`
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 5%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: ${(props) => (props.visible ? slideDown : slideUp)} 0.3s forwards;
 `;

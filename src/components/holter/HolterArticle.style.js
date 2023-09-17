@@ -39,7 +39,7 @@ export const CustomCard = styled(FlexBox)`
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: center;
-  padding: 5px;
+  padding: 1rem;
 `;
 
 export const Title = styled(Words)`
@@ -69,4 +69,6 @@ export const ArticleViewBtn = styled(Button)`
   width: 80%;
   align-self: center;
   border-radius: 10%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 `;
