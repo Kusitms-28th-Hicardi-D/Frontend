@@ -39,6 +39,13 @@ const media = {
 export const MainTitle = styled(Words)`
   font-size: 3rem;
   font-weight: 500;
+
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    font-size: 1rem;
+  }
 `;
 export const ViewContainer = styled(FlexBox)`
   align-self: center;
@@ -55,6 +62,9 @@ export const ViewContainer = styled(FlexBox)`
     display: flex;
     flex-flow: column;
     align-items: center;
+  }
+  @media ${media.mobile} {
+    width: 100%;
   }
 `;
 export const ViewItem = styled(FlexBox)`
@@ -80,6 +90,10 @@ export const ViewItem = styled(FlexBox)`
     display: flex;
     flex-flow: column nowrap;
   }
+  @media ${media.mobile} {
+    width: "100%";
+    align-items: flex-start;
+  }
 `;
 
 export const TextBox = styled(FlexBox)`
@@ -89,6 +103,9 @@ export const TextBox = styled(FlexBox)`
 
   @media ${media.tablet} {
     width: 80%;
+  }
+
+  @media ${media.mobile} {
   }
 `;
 
@@ -104,6 +121,9 @@ export const ImageBox = styled(FlexBox)`
     width: 80%;
     margin-bottom: 2rem;
   }
+
+  @media ${media.mobile} {
+  }
 `;
 
 export const Title = styled(Words)`
@@ -112,8 +132,15 @@ export const Title = styled(Words)`
   font-size: 2rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 125%; /* 35px */
+  line-height: 125%;
   margin-bottom: 2rem;
+
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 export const SubTitle = styled(Words)`
@@ -121,5 +148,11 @@ export const SubTitle = styled(Words)`
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 125%; /* 27.5px */
+  line-height: 125%;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    font-size: 0.9rem;
+  }
 `;
