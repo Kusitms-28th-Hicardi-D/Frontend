@@ -8,8 +8,17 @@ import {
   Title,
 } from "./HolterArticle.style";
 import { Button } from "@mui/material";
+import { axiosInstance } from "../../apis/axiosInstance";
 
 function HolterArticle({ info }) {
+  // console.log(info.fileKey);
+  const onClickItem = () => {
+    window.open(
+      `https://devmincho.site/api/solution/test/file?key=${info.fileKey}&downloadFileName=${info.title}.pdf`,
+      "_blank"
+    );
+  };
+
   return (
     <ArticleCard>
       <ImageBox>
@@ -26,6 +35,9 @@ function HolterArticle({ info }) {
       <ArticleViewBtn
         variant="contained"
         style={{ borderRadius: "10px", backgroundColor: "#42BDE3" }}
+        onClick={() => {
+          onClickItem(info.fileKey);
+        }}
       >
         View More
       </ArticleViewBtn>

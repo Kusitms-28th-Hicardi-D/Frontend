@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "https://devmincho.site/",
+  baseURL: "https://devmincho.site",
 });
 
 export const getSolution = async (name) => {
@@ -20,6 +20,12 @@ export const getItemDetail = async (id) => {
   const url = `/api/product/list/${id}`;
   const response = await axiosInstance.get(url);
   return response.data;
+};
+
+export const searchItem = async (searchWord) => {
+  const url = `/api/product/search?keyword=${searchWord}`;
+  const response = await axiosInstance.get(url);
+  return response.data.result.productList;
 };
 
 export const postDemo = async ({
