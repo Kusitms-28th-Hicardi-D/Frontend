@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import { EContainer } from "../../styles/customComponents";
+import { HeaderBox, HeaderTitle, ViewContainer } from "./SignUpPage.style";
 
 function SignUpPage() {
-  return <></>;
+  return (
+    <ViewContainer>
+      <HeaderBox>
+        <HeaderTitle>회원가입</HeaderTitle>
+      </HeaderBox>
+    </ViewContainer>
+  );
 }
 
 export default SignUpPage;
-
-const ViewContainer = styled.div``;

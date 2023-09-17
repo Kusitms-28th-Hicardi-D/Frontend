@@ -24,7 +24,7 @@ export const IntroFlexBox = styled(FlexBox)`
   width: 100%;
   min-height: 100vh;
   position: relative;
-  overflow: hidden; // 추가: 비디오가 컨테이너를 벗어나지 않도록 함
+  overflow: hidden;
   & > video {
     position: absolute;
     top: 50%;
@@ -34,7 +34,7 @@ export const IntroFlexBox = styled(FlexBox)`
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -1; // 비디오가 다른 콘텐츠 아래에 나타나게 함
+    z-index: -1;
   }
 `;
 
