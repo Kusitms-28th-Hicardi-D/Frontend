@@ -29,7 +29,7 @@ function PurchasePage() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(0);
   const [items, setItems] = useState();
-  // const { state } = useLocation();
+  const { state } = useLocation();
   async function fetchItems({ text }) {
     try {
       const response = await getItems(text);
@@ -39,23 +39,27 @@ function PurchasePage() {
     }
   }
 
-  // useEffect(() => {
-  //   if (state.selectedMenu == "hicardi") setSelected(1);
-  //   else if (state.selectedMenu == "nonin") setSelected(2);
-  //   else if (state.selectedMenu == "addService") setSelected(3);
-  //   // return setSelected(0);
-  // }, [])
-
   useEffect(() => {
-    // if (state.selectedMenu == "hicardi") setSelected(1);
-    // else if (state.selectedMenu == "nonin") setSelected(2);
-    // else if (state.selectedMenu == "addService") setSelected(3);
-
     let category = "all";
-    if (selected == 0) category = "all";
-    else if (selected == 1) category = "main";
-    else if (selected == 2) category = "assistant";
-    else if (selected == 3) category = "addition";
+
+    if (state?.selectedMenu) {
+      if (state?.selectedMenu == "hicardi") {
+        setSelected(1);
+        category = "main";
+      } else if (state?.selectedMenu == "nonin") {
+        setSelected(2);
+        category = "assistant";
+      } else if (state?.selectedMenu == "addService") {
+        setSelected(3);
+        category = "addition";
+      }
+    } else {
+      if (selected == 0) category = "all";
+      else if (selected == 1) category = "main";
+      else if (selected == 2) category = "assistant";
+      else if (selected == 3) category = "addition";
+    }
+
     fetchItems({ text: category });
   }, [selected]);
 

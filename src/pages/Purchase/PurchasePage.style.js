@@ -128,6 +128,7 @@ export const IndexBtn = styled(FlexBox)`
   flex-flow: column;
   padding: 1rem;
   border-radius: 40px;
+  cursor: pointer;
   color: ${(props) => (props.selected ? "white" : "black")};
   &.content {
     word-wrap: break-word;

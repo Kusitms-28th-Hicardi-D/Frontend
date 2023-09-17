@@ -1,10 +1,9 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import * as S from "./ProductionMain.style";
 import React from "react";
 import HicardiInfo from "../../components/production/HicardiInfo";
 import axios from "axios";
-import VideoCarousel from "../../components/carousel/VIdeoCarousel";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/carousel/Carousel";
 
