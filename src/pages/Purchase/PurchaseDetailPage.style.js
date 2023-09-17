@@ -3,15 +3,17 @@ import { FlexBox, Words } from "../../styles/customComponents";
 import { Button } from "@mui/material";
 
 export const ViewContainer = styled(FlexBox)`
-  min-height: 100vh;
   flex-flow: column wrap;
   align-self: center;
   align-items: center;
+  margin-bottom: 7rem;
 `;
 
 export const ProductHeader = styled(FlexBox)`
-  min-height: 80vh;
-  width: 90%;
+  margin: auto;
+  width: 90vw;
+  max-width: 1200px;
+  margin-bottom: 2rem;
 `;
 
 export const IndexContainer = styled(FlexBox)`
@@ -22,7 +24,12 @@ export const IndexContainer = styled(FlexBox)`
 `;
 export const DetailContainer = styled(FlexBox)`
   flex-flow: column wrap;
+  justify-content: center;
+  text-align: center;
   align-items: center;
+  margin: auto;
+  width: 90vw;
+  max-width: 1200px;
 `;
 
 // ------[ Index Components] ------ //
@@ -30,11 +37,12 @@ export const IndexItem = styled(Words)`
   padding: 1.5rem 0.7rem 1.1rem 0.7rem;
   color: white;
   margin: 0rem 0.5rem 0rem 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
   border-bottom: ${(props) =>
     props.selected ? "5px solid #08b9de" : "5px solid black"};
   transition: border-bottom 0.5s ease;
   font-weight: 500;
+  cursor: pointer;
 `;
 
 // ------[ Product Components ] ------ //
@@ -75,8 +83,6 @@ export const OptionBox = styled(FlexBox)`
   border-radius: 30px;
   margin-bottom: 2rem;
   border: 1px solid gray;
-
-  //
   position: relative;
 `;
 
@@ -106,7 +112,7 @@ export const Title = styled(Words)`
 export const SubTitle = styled(Words)`
   font-weight: 600;
   color: #75757580;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 `;
 
 export const Description = styled(Words)`
@@ -116,7 +122,7 @@ export const Description = styled(Words)`
 `;
 
 export const Price = styled(Words)`
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 2rem;
 `;

@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 export const ViewContainer = styled(FlexBox)`
   padding: 5rem 3rem 5rem 3rem;
   flex-flow: column nowrap;
-  width: 80vw;
+  width: 100%;
 `;
 
 export const TitleBox = styled(FlexBox)`

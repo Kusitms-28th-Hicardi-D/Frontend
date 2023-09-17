@@ -1,25 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  BtnWrapper,
-  Dropdown,
-  HeaderSubTitle,
-  HeaderTextBox,
-  HeaderTitle,
-  ImageWrapper,
-  IndexBtn,
-  IndexBtnWrapper,
-  IndexContainer,
-  ItemPrice,
-  ItemSubTitle,
-  ItemTitle,
-  OrderBtnBox,
-  OrderBtnWrapper,
-  ProductContainer,
-  ProductWrapper,
-  TextWrapper,
-  ViewContainer,
-  ViewHeader,
-} from "./PurchasePage.style";
+import * as S from "./PurchasePage.style";
 import { getItems } from "../../apis/axiosInstance";
 import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
@@ -58,57 +38,57 @@ function PurchasePage() {
   };
 
   return (
-    <ViewContainer>
-      <ViewHeader>
-        <HeaderTextBox onClick={() => console.log(state)}>
-          <HeaderTitle>HiCardi +</HeaderTitle>
-          <HeaderSubTitle>스마트한 병원을 위한 솔루션</HeaderSubTitle>
-          <HeaderSubTitle>Hicardi+ 제품을 만나보세요.</HeaderSubTitle>
-        </HeaderTextBox>
-      </ViewHeader>
-      <IndexContainer>
-        <IndexBtnWrapper>
-          <IndexBtn
+    <S.ViewContainer>
+      <S.ViewHeader>
+        <S.HeaderTextBox onClick={() => console.log(state)}>
+          <S.HeaderTitle>HiCardi +</S.HeaderTitle>
+          <S.HeaderSubTitle>스마트한 병원을 위한 솔루션</S.HeaderSubTitle>
+          <S.HeaderSubTitle>Hicardi+ 제품을 만나보세요.</S.HeaderSubTitle>
+        </S.HeaderTextBox>
+      </S.ViewHeader>
+      <S.IndexContainer>
+        <S.IndexBtnWrapper>
+          <S.IndexBtn
             id="all"
             selected={category === "all"}
             onClick={onClickMenu}
           >
             전체
-          </IndexBtn>
-          <IndexBtn
+          </S.IndexBtn>
+          <S.IndexBtn
             id="main"
             selected={category === "main"}
             onClick={onClickMenu}
           >
             기기 본체
-          </IndexBtn>
-          <IndexBtn
+          </S.IndexBtn>
+          <S.IndexBtn
             id="assistant"
             selected={category === "assistant"}
             onClick={onClickMenu}
           >
             추가 용품
-          </IndexBtn>
-          <IndexBtn
+          </S.IndexBtn>
+          <S.IndexBtn
             id="addition"
             selected={category === "addition"}
             onClick={onClickMenu}
           >
             추가 서비스
-          </IndexBtn>
-        </IndexBtnWrapper>
+          </S.IndexBtn>
+        </S.IndexBtnWrapper>
         {/* <Dropdown>dropdown</Dropdown> */}
-      </IndexContainer>
-      <ProductContainer>
+      </S.IndexContainer>
+      <S.ProductContainer>
         {items &&
           items.map((element, index) => {
             return (
-              <ProductWrapper
+              <S.ProductWrapper
                 onClick={() => {
                   navigate(`/purchase/detail/${element.productId}`);
                 }}
               >
-                <ImageWrapper>
+                <S.ImageWrapper>
                   <img
                     src={element.imageUrl}
                     style={{
@@ -117,29 +97,29 @@ function PurchasePage() {
                       objectFit: "cover",
                     }}
                   />
-                </ImageWrapper>
-                <TextWrapper>
-                  <ItemTitle>{element.title}</ItemTitle>
-                  <ItemSubTitle>{element.content}</ItemSubTitle>
-                </TextWrapper>
-                <OrderBtnWrapper>
-                  <ItemPrice>
+                </S.ImageWrapper>
+                <S.TextWrapper>
+                  <S.ItemTitle>{element.title}</S.ItemTitle>
+                  <S.ItemSubTitle>{element.content}</S.ItemSubTitle>
+                </S.TextWrapper>
+                <S.OrderBtnWrapper>
+                  <S.ItemPrice>
                     {element.price !== 0 && element.price.toLocaleString()}
-                  </ItemPrice>
-                  <OrderBtnBox>
-                    <BtnWrapper>
+                  </S.ItemPrice>
+                  <S.OrderBtnBox>
+                    <S.BtnWrapper>
                       <ShoppingCartSharpIcon style={{ fontSize: "2rem" }} />
-                    </BtnWrapper>
-                    <BtnWrapper>
+                    </S.BtnWrapper>
+                    <S.BtnWrapper>
                       <FavoriteSharpIcon style={{ fontSize: "2rem" }} />
-                    </BtnWrapper>
-                  </OrderBtnBox>
-                </OrderBtnWrapper>
-              </ProductWrapper>
+                    </S.BtnWrapper>
+                  </S.OrderBtnBox>
+                </S.OrderBtnWrapper>
+              </S.ProductWrapper>
             );
           })}
-      </ProductContainer>
-    </ViewContainer>
+      </S.ProductContainer>
+    </S.ViewContainer>
   );
 }
 
