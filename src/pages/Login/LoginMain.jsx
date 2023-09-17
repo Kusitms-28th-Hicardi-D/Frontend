@@ -95,10 +95,10 @@ function LoginMain() {
           });
           setLoginState({ logined: true, user: user.email });
 
-          navigation(-1);
+          navigation("/");
           Toast.fire({
             icon: "success",
-            title: "Signed in successfully",
+            title: "로그인되었습니다",
           });
         }
       })
