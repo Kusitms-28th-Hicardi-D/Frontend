@@ -43,6 +43,17 @@ function Header() {
       navigate(`/search/${inputSearch}`);
     } catch (error) {
       console.error(error);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "error",
+        title: "찾으시는 검색결과가 없습니다",
+      });
     }
   };
   return (
@@ -57,6 +68,9 @@ function Header() {
             setInputSearch(e.target.value);
           }}
           style={{ width: "100%", padding: "5px 10px" }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") searchs(inputSearch);
+          }}
         />
         <CancelIcon
           onClick={toggleSearchBar}
