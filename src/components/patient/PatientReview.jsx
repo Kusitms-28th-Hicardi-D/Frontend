@@ -5,21 +5,20 @@ import {
   SliderWrapper,
   Title,
   ViewContainer,
-  WordBox,
-} from "./HolterReview.style";
-import { Words } from "../../styles/customComponents";
-import { getSolution } from "../../apis/axiosInstance";
+} from "./PatientReview.style";
+
 import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import { getSolution } from "../../apis/axiosInstance";
 
-function HolterReview() {
+function PatientReview() {
   const [data, setData] = useState();
 
   const fetchData = async () => {
     try {
-      const response = await getSolution("holter");
+      const response = await getSolution("monitor");
       setData(response.result.reviews);
       return true;
     } catch (error) {
@@ -29,11 +28,9 @@ function HolterReview() {
 
   useEffect(() => {
     fetchData();
-    console.log(data);
   }, []);
   const settings = {
     dots: true,
-
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -70,7 +67,7 @@ function HolterReview() {
   );
 }
 
-export default HolterReview;
+export default PatientReview;
 
 const ReviewBox = styled.div`
   display: flex;
