@@ -39,6 +39,12 @@ const WordBox = styled(FlexBox)`
   width: 80%;
   flex-flow: column nowrap;
   align-items: center;
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    width: 90%;
+  }
 `;
 
 const TitleWord = styled(Words)`
@@ -48,11 +54,19 @@ const TitleWord = styled(Words)`
   @media ${media.tablet} {
     font-size: 2rem;
   }
+
+  @media ${media.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 const SubWord = styled(Words)`
   font-size: 1.5rem;
   @media ${media.tablet} {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+
+  @media ${media.mobile} {
+    font-size: 0.8rem;
   }
 `;
