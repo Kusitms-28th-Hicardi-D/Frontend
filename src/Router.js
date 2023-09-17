@@ -19,6 +19,7 @@ import QnaDetail from "./pages/Board/QnaDetail";
 import NoticeDetail from "./pages/Board/NoticeDetail";
 import PurchaseDetailPage from "./pages/Purchase/PurchaseDetailPage";
 import PatientPage from "./pages/Introduce/Patient/PatientPage";
+import SearchResultPage from "./pages/Search/SearchResultPage";
 
 const router = createBrowserRouter([
   {
@@ -175,6 +176,16 @@ const router = createBrowserRouter([
       <>
         <DefaultView>
           <NoticeDetail />
+        </DefaultView>
+      </>
+    ),
+  },
+  {
+    path: "/search/:searchWord",
+    element: (
+      <>
+        <DefaultView>
+          <SearchResultPage />
         </DefaultView>
       </>
     ),
