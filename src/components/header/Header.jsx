@@ -19,6 +19,7 @@ import {
   MenuBar,
   MenuBarItem,
   MenuBarTxt,
+  MenuBarSubItemWrapper,
 } from "./Header.style";
 import { Button, TextField } from "@mui/material";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -34,6 +35,9 @@ function Header() {
   const [loginState, setLoginState] = useRecoilState(LoginState);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [isOpenMenuBar, setIsOpenMenuBar] = useState(false);
+  const [isOpenService, setIsOpenService] = useState(false);
+  const [isOpenPurchase, setIsOpenPurchase] = useState(false);
+  const [isOpenPressCenter, setIsOpenPressCenter] = useState(false);
 
   const toggleSearchBar = () => {
     setShowSearchBar((prev) => !prev);
@@ -41,7 +45,30 @@ function Header() {
 
   const toggleMenuBar = () => {
     setIsOpenMenuBar((prev) => !prev);
+    setIsOpenService(false);
+    setIsOpenPurchase(false);
+    setIsOpenPressCenter(false);
   };
+
+  const toggleSubMenuItem = (event) => {
+    const id = event.currentTarget.id;
+    if (id === "service") {
+      setIsOpenService((prev) => !prev);
+      setIsOpenPurchase(false);
+      setIsOpenPressCenter(false);
+    }
+    if (id === "purchase") {
+      setIsOpenService(false);
+      setIsOpenPurchase((prev) => !prev);
+      setIsOpenPressCenter(false);
+    }
+    if (id === "pressCenter") {
+      setIsOpenService(false);
+      setIsOpenPurchase(false);
+      setIsOpenPressCenter((prev) => !prev);
+    }
+  };
+
   return (
     <>
       <SearchBar visible={showSearchBar}>
@@ -64,6 +91,7 @@ function Header() {
             height: "4%",
             marginLeft: "2%",
             alignSelf: "center",
+            cursor: "pointer",
           }}
           onClick={() => {
             navigate("/");
@@ -251,25 +279,103 @@ function Header() {
             <MenuIcon fontSize="medium" />
           </MenuBtn>
         </MenuEndItemBox>
-        {false && (
+
+        
+        {isOpenMenuBar && (
           <MenuBar>
-            <MenuBarItem>
+            <MenuBarItem id="service" onClick={toggleSubMenuItem}>
               <MenuBarTxt>서비스 소개</MenuBarTxt>
               <ArrowDropDownIcon />
             </MenuBarItem>
-            <MenuBarItem>
+            {isOpenService && (
+              <MenuBarSubItemWrapper>
+                <MenuBarItem
+                  onClick={() => {
+                    navigate("/patientIntroduce");
+                    setIsOpenMenuBar(false);
+                  }}
+                >
+                  <MenuBarTxt>환자 모니터링 솔루션</MenuBarTxt>
+                  <div></div>
+                </MenuBarItem>
+                <MenuBarItem
+                  onClick={() => {
+                    navigate("/holterIntroduce");
+                    setIsOpenMenuBar(false);
+                  }}
+                >
+                  <MenuBarTxt>홀터 솔루션</MenuBarTxt>
+                  <div></div>
+                </MenuBarItem>
+              </MenuBarSubItemWrapper>
+            )}
+            <MenuBarItem
+              onClick={() => {
+                navigate("/production");
+                setIsOpenMenuBar(false);
+              }}
+            >
               <MenuBarTxt>제품 소개</MenuBarTxt>
               <div></div>
             </MenuBarItem>
-            <MenuBarItem>
+            <MenuBarItem id="pressCenter" onClick={toggleSubMenuItem}>
               <MenuBarTxt>프레스 센터</MenuBarTxt>
               <ArrowDropDownIcon />
             </MenuBarItem>
-            <MenuBarItem>
+            {isOpenPressCenter && (
+              <MenuBarSubItemWrapper>
+                <MenuBarItem
+                  onClick={() => {
+                    navigate("/pressCenter/news");
+                    setIsOpenMenuBar(false);
+                  }}
+                >
+                  <MenuBarTxt>하이카디 소식</MenuBarTxt>
+                </MenuBarItem>
+                <div></div>
+                <MenuBarItem
+                  onClick={() => {
+                    navigate("/pressCenter/report");
+                    setIsOpenMenuBar(false);
+                  }}
+                >
+                  <MenuBarTxt>보도자료</MenuBarTxt>
+                  <div></div>
+                </MenuBarItem>
+              </MenuBarSubItemWrapper>
+            )}
+            <MenuBarItem id="purchase" onClick={toggleSubMenuItem}>
               <MenuBarTxt>구매하기</MenuBarTxt>
               <ArrowDropDownIcon />
             </MenuBarItem>
-            <MenuBarItem>
+            {isOpenPurchase && (
+              <MenuBarSubItemWrapper>
+                <MenuBarItem
+                  onClick={() => {
+                    navigate("/purchase");
+                    setIsOpenMenuBar(false);
+                  }}
+                >
+                  <MenuBarTxt>제품 구매</MenuBarTxt>
+                  <div></div>
+                </MenuBarItem>
+                <MenuBarItem
+                  onClick={() => {
+                    navigate("/holterIntroduce/demo");
+                    setIsOpenMenuBar(false);
+                  }}
+                >
+                  <MenuBarTxt>데모 요청</MenuBarTxt>
+                  <div></div>
+                </MenuBarItem>
+              </MenuBarSubItemWrapper>
+            )}
+            <MenuBarItem
+              onClick={() => {
+                navigate("/board");
+                setIsOpenMenuBar(false);
+              }}
+            >
               <MenuBarTxt>게시판</MenuBarTxt>
               <div></div>
             </MenuBarItem>
