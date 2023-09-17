@@ -21,11 +21,32 @@ export const Container = styled.div`
 
   @media ${media.tablet} {
   }
+
+  @media ${media.mobile} {
+    justify-content: center;
+  }
 `;
 
 export const FooterItem = styled(FlexBox)`
   justify-content: center;
   @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    ${({ isFirstItem }) =>
+      isFirstItem &&
+      `
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    `}
+    ${({ isSecondItem }) =>
+      isSecondItem &&
+      `
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    `}
   }
 `;
 
@@ -34,4 +55,9 @@ export const FooterWord = styled(Words)`
   margin-bottom: 1.5%;
   padding: 0;
   border-bottom: ${(props) => (props.underline ? "1px solid #1aabde" : "0")};
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+  }
 `;
