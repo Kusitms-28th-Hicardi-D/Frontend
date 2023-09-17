@@ -75,21 +75,6 @@ function PatientPage() {
       </ImageContainer>
       <PatientArticles />
       <PatientReview />
-      <ButtonContainer>
-        <YesBtn
-          variant="outlined"
-          style={{
-            padding: "2rem 5rem 2rem 5rem",
-            borderRadius: "30px",
-            fontSize: "2rem",
-          }}
-          onClick={() => {
-            navigate("/purchase/detail/1");
-          }}
-        >
-          환자모니터링 솔루션 구매하기
-        </YesBtn>
-      </ButtonContainer>
     </ViewContainer>
   );
 }
