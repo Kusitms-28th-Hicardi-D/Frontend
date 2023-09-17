@@ -28,16 +28,21 @@ import { auth } from "../../firebase/auth";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { searchItem } from "../../apis/axiosInstance";
 
 function Header() {
   const navigate = useNavigate();
   const user = useRecoilValue(LoginState);
   const [loginState, setLoginState] = useRecoilState(LoginState);
   const [showSearchBar, setShowSearchBar] = useState(false);
+
   const [isOpenMenuBar, setIsOpenMenuBar] = useState(false);
   const [isOpenService, setIsOpenService] = useState(false);
   const [isOpenPurchase, setIsOpenPurchase] = useState(false);
   const [isOpenPressCenter, setIsOpenPressCenter] = useState(false);
+
+  const [inputSearch, setInputSearch] = useState();
+
 
   const toggleSearchBar = () => {
     setShowSearchBar((prev) => !prev);
@@ -69,6 +74,29 @@ function Header() {
     }
   };
 
+
+  const searchs = async (keyword) => {
+    console.log(keyword);
+    try {
+      const response = await searchItem(keyword);
+      console.log(response);
+      navigate(`/search/${inputSearch}`);
+    } catch (error) {
+      console.error(error);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "error",
+        title: "찾으시는 검색결과가 없습니다",
+      });
+    }
+  };
+
   return (
     <>
       <SearchBar visible={showSearchBar}>
@@ -76,13 +104,25 @@ function Header() {
           id="standard-basic"
           variant="outlined"
           placeholder="검색어를 입력해주세요"
+          value={inputSearch}
+          onChange={(e) => {
+            setInputSearch(e.target.value);
+          }}
           style={{ width: "100%", padding: "5px 10px" }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") searchs(inputSearch);
+          }}
         />
         <CancelIcon
           onClick={toggleSearchBar}
           style={{ width: "2rem", height: "2rem" }}
         />
-        <SearchIcon style={{ width: "2rem", height: "2rem" }} />
+        <SearchIcon
+          style={{ width: "2rem", height: "2rem" }}
+          onClick={() => {
+            searchs(inputSearch);
+          }}
+        />
       </SearchBar>
       <HeaderWrapper row>
         <FlexBox

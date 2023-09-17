@@ -6,11 +6,9 @@ import {
   ImageBox,
   SubTitle,
   Title,
-} from "./HolterArticle.style";
-import { Button } from "@mui/material";
-import { axiosInstance } from "../../apis/axiosInstance";
+} from "./PatientArticle.style";
 
-function HolterArticle({ info }) {
+function PatientArticle({ info }) {
   // console.log(info.fileKey);
   const onClickItem = () => {
     window.open(
@@ -45,4 +43,4 @@ function HolterArticle({ info }) {
   );
 }
 
-export default HolterArticle;
+export default PatientArticle;
