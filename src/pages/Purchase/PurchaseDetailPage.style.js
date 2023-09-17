@@ -125,7 +125,7 @@ export const Price = styled(Words)`
   font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 2rem;
-`;
+`; 
 
 export const TotalPrice = styled(Words)`
   font-size: 1rem;
