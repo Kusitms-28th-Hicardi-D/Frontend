@@ -6,16 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function Carousel(props) {
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const carouselRef = useRef(null).current;
   const videoRef = useRef([]);
-
-  // useEffect(() => {
-  //   const currentVideo = videoRef.current[0];
-  //   if (currentVideo) {
-  //     currentVideo.play();
-  //   }
-  // }, []);
 
   useEffect(() => {
     // 슬라이드가 변경될 때 호출되는 이벤트 핸들러

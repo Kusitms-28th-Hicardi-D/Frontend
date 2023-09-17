@@ -5,6 +5,10 @@ export const ViewContainer = styled(FlexBox)`
   margin: auto;
   flex-flow: column wrap;
   max-width: 90%;
+
+  /* margin: auto;
+  width: 90vw;
+  max-width: 1200px; */
 `;
 
 export const ViewHeader = styled(FlexBox)`
@@ -128,10 +132,12 @@ export const IndexBtn = styled(FlexBox)`
   flex-flow: column;
   padding: 1rem;
   border-radius: 40px;
+  cursor: pointer;
   color: ${(props) => (props.selected ? "white" : "black")};
   &.content {
     word-wrap: break-word;
   }
+  margin-bottom: 1rem;
 `;
 
 export const Dropdown = styled(FlexBox)`

@@ -157,3 +157,57 @@ export const SearchBar = styled.div`
   align-items: center;
   animation: ${(props) => (props.visible ? slideDown : slideUp)} 0.3s forwards;
 `;
+
+export const MenuBtn = styled.div`
+  cursor: pointer;
+
+  @media (min-width: 715px) {
+    display: none;
+  }
+`;
+
+export const MenuBar = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  position: absolute;
+  top: 45px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 715px) {
+    display: none;
+  }
+`;
+
+export const MenuBarItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 1.5rem;
+  background-color: #fff;
+  height: 50px;
+  cursor: pointer;
+
+  &:hover {
+    color: #01b0ef;
+  }
+`;
+
+export const MenuBarTxt = styled.div`
+  /* color: var(--text-text-01, #242424); */
+  font-size: 1rem;
+  font-weight: 700;
+`;
+
+export const MenuBarSubItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid #01b0ef;
+  border-bottom: 1px solid #01b0ef;
+`;
+
+export const MenuBarSubItem = styled.div``;
+
+export const MenuBarSubItemTxt = styled.div``;

@@ -33,8 +33,6 @@ export default function NoticeDetail() {
     );
   };
 
-  const contents = data.content.trim().split(".");
-
   return (
     <S.ViewContainer>
       <S.Title onClick={() => console.log(data.contents)}>{data.title}</S.Title>
