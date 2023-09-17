@@ -168,7 +168,7 @@ export const ListItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 7rem;
+  height: 8rem;
   background-color: antiquewhite;
   border-radius: 8px;
   background: var(--ui-surface-01, #f6f6f6);

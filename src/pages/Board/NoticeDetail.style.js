@@ -40,12 +40,14 @@ export const Contents = styled.div`
   border-top: 2px solid var(--gray-gray-70, #dfdfdf);
   border-bottom: 2px solid var(--gray-gray-70, #dfdfdf);
   background: var(--ui-surface-01, #f6f6f6);
+  white-space: pre-line;
 
   min-height: 300px;
   color: var(--text-text-01, #242424);
   font-family: Noto Sans CJK KR;
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5rem;
 `;
 
 export const AttachTitle = styled.div`
@@ -57,11 +59,17 @@ export const AttachTitle = styled.div`
   margin-bottom: 1rem;
 `;
 
+export const AttachButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 7rem;
+`
+
 export const AttatchButton = styled.div`
-  padding: 0.5rem 1rem;
+  padding: 1rem 1.2rem;
   background: var(--ui-surface, #fff);
   box-shadow: 0px 0px 5px 0px rgba(0, 51, 150, 0.25);
-  margin-bottom: 0.8rem;
   cursor: pointer;
 
   color: var(--Black, #000);

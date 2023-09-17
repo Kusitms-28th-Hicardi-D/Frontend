@@ -50,6 +50,7 @@ export const MenuItem = styled(Words)`
   font-weight: bolder;
   font-size: 1.3rem;
   padding-bottom: 4px;
+  cursor: pointer;
 
   &:hover {
     border-bottom: 2px solid #08b9de;
