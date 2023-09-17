@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlexBox, Words } from "../../styles/customComponents";
 
 export const ViewContainer = styled(FlexBox)`
-  width: 80vw;
+  width: 100%;
   flex-flow: column wrap;
   padding: 5rem 3rem 5rem 3rem;
 `;

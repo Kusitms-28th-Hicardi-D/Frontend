@@ -26,7 +26,7 @@ import { useEffect, useState } from "react";
 import OrderIntroduce from "../../components/orderIntroduce/OrderIntroduce";
 import OrderQna from "../../components/orderIntroduce/OrderQna";
 
-function PurchaseDetailPage() {
+export default function PurchaseDetailPage() {
   const params = useParams().id;
   const [data, setData] = useState();
   const [selected, setSelected] = useState(1);
@@ -77,7 +77,6 @@ function PurchaseDetailPage() {
                 fontWeight: "600",
                 padding: "0.8rem 3rem 0.8rem 3rem",
                 borderRadius: "50px",
-                border: "1px solid gray",
               }}
             >
               구매하기
@@ -138,5 +137,3 @@ function PurchaseDetailPage() {
     <ViewContainer></ViewContainer>
   );
 }
-
-export default PurchaseDetailPage;
