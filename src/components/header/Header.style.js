@@ -157,3 +157,32 @@ export const SearchBar = styled.div`
   align-items: center;
   animation: ${(props) => (props.visible ? slideDown : slideUp)} 0.3s forwards;
 `;
+
+export const MenuBtn = styled.div`
+  cursor: pointer;
+`;
+
+export const MenuBar = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  position: absolute;
+  top: 50px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MenuBarItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 1.5rem;
+  background-color: beige;
+  height: 50px;
+`;
+
+export const MenuBarTxt = styled.div`
+  color: var(--text-text-01, #242424);
+  font-size: 1rem;
+  font-weight: 700;
+`;

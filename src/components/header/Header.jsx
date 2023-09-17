@@ -15,6 +15,10 @@ import {
   UserBtnBox,
   UserBtn,
   SearchBar,
+  MenuBtn,
+  MenuBar,
+  MenuBarItem,
+  MenuBarTxt,
 } from "./Header.style";
 import { Button, TextField } from "@mui/material";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -23,14 +27,20 @@ import { auth } from "../../firebase/auth";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
+
 function Header() {
   const navigate = useNavigate();
   const user = useRecoilValue(LoginState);
   const [loginState, setLoginState] = useRecoilState(LoginState);
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const [isOpenMenuBar, setIsOpenMenuBar] = useState(false);
 
   const toggleSearchBar = () => {
     setShowSearchBar((prev) => !prev);
+  };
+
+  const toggleMenuBar = () => {
+    setIsOpenMenuBar((prev) => !prev);
   };
   return (
     <>
@@ -237,10 +247,34 @@ function Header() {
               </>
             )}
           </div>
-          <div className="mobile">
+          <MenuBtn onClick={toggleMenuBar} className="mobile">
             <MenuIcon fontSize="medium" />
-          </div>
+          </MenuBtn>
         </MenuEndItemBox>
+        {false && (
+          <MenuBar>
+            <MenuBarItem>
+              <MenuBarTxt>서비스 소개</MenuBarTxt>
+              <ArrowDropDownIcon />
+            </MenuBarItem>
+            <MenuBarItem>
+              <MenuBarTxt>제품 소개</MenuBarTxt>
+              <div></div>
+            </MenuBarItem>
+            <MenuBarItem>
+              <MenuBarTxt>프레스 센터</MenuBarTxt>
+              <ArrowDropDownIcon />
+            </MenuBarItem>
+            <MenuBarItem>
+              <MenuBarTxt>구매하기</MenuBarTxt>
+              <ArrowDropDownIcon />
+            </MenuBarItem>
+            <MenuBarItem>
+              <MenuBarTxt>게시판</MenuBarTxt>
+              <div></div>
+            </MenuBarItem>
+          </MenuBar>
+        )}
       </HeaderWrapper>
     </>
   );
