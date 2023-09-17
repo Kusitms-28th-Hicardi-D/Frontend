@@ -28,8 +28,8 @@ function PatientPage() {
           />
         </video>
         <IntroWordBox column>
-          <Title white>이제는 하이카디로</Title>
-          <Title white>부정맥 의심환자를 간단하게 검사하세요!</Title>
+          <Title white>하이카디 플러스와 연동이 가능한</Title>
+          <Title white>산소포화도 측정장비</Title>
           <BtnWrapper style={{ justifyContent: "flex-start" }}>
             <CustomBtn
               onClick={() => {
