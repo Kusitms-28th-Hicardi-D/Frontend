@@ -15,6 +15,7 @@ import {
   CustomBtn,
   BtnWrapper,
 } from "../../../components/landingMain/landingHeaderStyle";
+import HolterReview from "../../../components/holter/HolterReview";
 
 const holterImageLink = {
   holter360: require("../../../assets/image/Holter/Holter360.jpg"),
@@ -66,6 +67,7 @@ function HolterPage() {
         />
       </HolterIntroBox>
       <HolterArticles />
+      <HolterReview />
     </ViewContainer>
   );
 }
