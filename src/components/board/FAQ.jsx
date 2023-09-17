@@ -2,6 +2,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import styled from "styled-components";
 import qstIcon from "../../assets/icon/Q.svg";
 import { useState } from "react";
+import { media } from "../../styles/media.style";
 
 export default function FAQ() {
   const data = [
@@ -245,6 +246,14 @@ const Menu = styled.button`
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
+
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
 `;
 
 const TopLine = styled.div`
@@ -258,6 +267,11 @@ const QstBox = styled.div`
   align-items: center;
   border-bottom: 2px solid var(--gray-gray-70, #dfdfdf);
   background: var(--ui-surface, #fff);
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+  }
 `;
 
 const QstIcon = styled.div`
@@ -265,6 +279,15 @@ const QstIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${media.tablet} {
+  }
+
+  @media ${media.mobile} {
+    margin-left: 1rem;
+    width: 2%;
+    margin-right: 2rem;
+  }
 `;
 
 const QstTxt = styled.div`
@@ -296,6 +319,6 @@ const AswTxt = styled.div`
   line-height: 1.5rem;
 
   @media (max-width: 768px) {
-    width: 95%
+    width: 95%;
   }
 `;
